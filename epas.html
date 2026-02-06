@@ -96,8 +96,8 @@
                 <div class="grid-2-col euroscola-grid">
                     <!-- Video 1: Euroscola (Erasmus 3) -->
                     <div class="video-container">
-                        <video id="video-euroscola-1" style="width: 100%; border-radius: 8px;" poster="media/antet.png"
-                            controls>
+                        <video id="video-euroscola-1" style="width: 100%; border-radius: 8px;"
+                            poster="media/ERASMUS3_thumb.jpg" controls>
                             <source src="media/ERASMUS3.mp4" type="video/mp4">
                             Browserul tău nu suportă elementul video.
                         </video>
@@ -105,8 +105,8 @@
 
                     <!-- Video 2: Euroscola Activități (LTAV E1) -->
                     <div class="video-container">
-                        <video id="video-euroscola-2" style="width: 100%; border-radius: 8px;" poster="media/antet.png"
-                            controls>
+                        <video id="video-euroscola-2" style="width: 100%; border-radius: 8px;"
+                            poster="media/LTAV E1_thumb.jpg" controls>
                             <source src="media/LTAV E1.mp4" type="video/mp4">
                             Browserul tău nu suportă elementul video.
                         </video>
@@ -226,6 +226,43 @@
                     }).catch(function (error) {
                         console.error('Error loading PDF:', error);
                         document.getElementById('loading-info').textContent = 'Eroare la încărcarea PDF: ' + error.message;
+                    });
+                });
+            </script>
+
+            <!-- Script to handle video playback -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var videos = document.querySelectorAll('video');
+                    videos.forEach(function (video) {
+                        video.addEventListener('play', function () {
+                            // Start fullscreen on play
+                            try {
+                                if (video.requestFullscreen) {
+                                    video.requestFullscreen();
+                                } else if (video.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                                    video.webkitRequestFullscreen();
+                                } else if (video.mozRequestFullScreen) { /* Firefox */
+                                    video.mozRequestFullScreen();
+                                } else if (video.msRequestFullscreen) { /* IE/Edge */
+                                    video.msRequestFullscreen();
+                                } else if (video.webkitEnterFullscreen) { /* iOS */
+                                    video.webkitEnterFullscreen();
+                                }
+                            } catch (err) {
+                                console.log("Fullscreen request failed: " + err);
+                            }
+
+                            // Send message to parent to pause global music
+                            window.parent.postMessage('pauseMusic', '*');
+
+                            // Pause other videos on this page
+                            videos.forEach(function (otherVideo) {
+                                if (otherVideo !== video) {
+                                    otherVideo.pause();
+                                }
+                            });
+                        });
                     });
                 });
             </script>

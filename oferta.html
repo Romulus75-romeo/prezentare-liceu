@@ -55,7 +55,7 @@
             <div class="video-card">
                 <h3 style="text-align: center; margin-bottom: 15px; font-size: 1.1rem;">Prezentare Generală</h3>
                 <div class="video-container youtube-style">
-                    <video id="video-1" controls poster="media/antet.png" style="width: 100%;">
+                    <video id="video-1" controls poster="media/Prezentare_thumb.jpg" style="width: 100%;">
                         <source src="media/Prezentare.mp4" type="video/mp4">
                         Browser-ul tău nu suportă tag-ul video.
                     </video>
@@ -112,7 +112,7 @@
             <div class="video-card">
                 <h3 style="text-align: center; margin-bottom: 15px; font-size: 1.1rem;">Tur Virtual</h3>
                 <div class="video-container youtube-style">
-                    <video id="video-2" controls poster="media/antet.png" style="width: 100%;">
+                    <video id="video-2" controls poster="media/Prezentare1_thumb.jpg" style="width: 100%;">
                         <source src="media/Prezentare1.mp4" type="video/mp4">
                         Browser-ul tău nu suportă tag-ul video.
                     </video>
@@ -307,6 +307,43 @@
                 overlay.style.display = 'none';
             }
         }
+    </script>
+
+    <!-- Script to handle video playback -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var videos = document.querySelectorAll('video');
+            videos.forEach(function (video) {
+                video.addEventListener('play', function () {
+                    // Start fullscreen on play
+                    try {
+                        if (video.requestFullscreen) {
+                            video.requestFullscreen();
+                        } else if (video.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                            video.webkitRequestFullscreen();
+                        } else if (video.mozRequestFullScreen) { /* Firefox */
+                            video.mozRequestFullScreen();
+                        } else if (video.msRequestFullscreen) { /* IE/Edge */
+                            video.msRequestFullscreen();
+                        } else if (video.webkitEnterFullscreen) { /* iOS */
+                            video.webkitEnterFullscreen();
+                        }
+                    } catch (err) {
+                        console.log("Fullscreen request failed: " + err);
+                    }
+
+                    // Send message to parent to pause global music
+                    window.parent.postMessage('pauseMusic', '*');
+
+                    // Pause other videos on this page
+                    videos.forEach(function (otherVideo) {
+                        if (otherVideo !== video) {
+                            otherVideo.pause();
+                        }
+                    });
+                });
+            });
+        });
     </script>
 </body>
 
