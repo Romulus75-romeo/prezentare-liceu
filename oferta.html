@@ -156,10 +156,17 @@
                 var unscaledViewport = page.getViewport({ scale: 1 });
                 // maintain a small margin
                 var desiredScale = (containerWidth - 40) / unscaledViewport.width;
-                var viewport = page.getViewport({ scale: desiredScale });
 
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
+                // HiDPI / Retina Display Support
+                var outputScale = window.devicePixelRatio || 1;
+                var viewport = page.getViewport({ scale: desiredScale * outputScale });
+
+                canvas.width = Math.floor(viewport.width);
+                canvas.height = Math.floor(viewport.height);
+
+                // Force CSS dimensions to match the logical size
+                canvas.style.width = Math.floor(viewport.width / outputScale) + "px";
+                canvas.style.height = Math.floor(viewport.height / outputScale) + "px";
 
                 // Render PDF page into canvas context
                 var renderContext = {
