@@ -782,58 +782,64 @@ footer small {
 /* Three-column presentation layout */
 .presentation-layout {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-flow: row wrap;
     justify-content: center;
-    gap: 30px;
-    max-width: 1400px;
-    /* Allow more width for this section */
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1600px;
     margin: 0 auto 60px;
-    padding: 0 20px;
-    flex-wrap: wrap;
-    /* Wrap on smaller screens */
+    padding: 0 10px;
 }
 
 .presentation-side {
-    flex: 1;
-    min-width: 300px;
+    flex: 1 1 300px;
+    /* Grow, shrink, basis */
     max-width: 400px;
+    min-width: 280px;
 }
 
 .presentation-main {
-    flex: 2;
-    min-width: min(600px, 100%);
+    flex: 2 1 600px;
+    /* Takes up more space */
     max-width: 800px;
+    min-width: 320px;
+    /* Allow shrinking on mobile */
 }
 
 /* Adjust video card for side column */
 .presentation-side .video-card {
-    max-width: 100% !important;
+    width: 100%;
     margin-bottom: 20px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
+
+    /* Below this width, switch to stack or 2+1 layout */
     .presentation-layout {
         flex-direction: column;
         align-items: center;
     }
 
-    .presentation-side,
     .presentation-main {
+        order: 1;
         width: 100%;
-        max-width: 700px;
-        flex: auto;
+        margin-bottom: 30px;
     }
 
     .presentation-side {
         order: 2;
-        /* Put videos below PDF on mobile */
+        width: 100%;
+        max-width: 700px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
     }
+}
 
-    .presentation-main {
-        order: 1;
-        /* Put PDF on top on mobile */
-        margin-bottom: 30px;
+@media (max-width: 768px) {
+    .presentation-side {
+        flex-direction: column;
     }
 }
 
