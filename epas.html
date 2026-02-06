@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPAS - Euroscola | Liceul Tehnologic ”Aurel Vlaicu” Galați</title>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Official Header -->
+    <div class="official-bar">
+        <img src="media/antet.png" alt="Antet Liceul Tehnologic Aurel Vlaicu Galați">
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <h1>Liceul Tehnologic ”Aurel Vlaicu” Galați</h1>
+            <p>Excelență în educație tehnică și tehnologică</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-links">
+            <a href="index.html">Acasă</a>
+            <a href="oferta.html">Oferta școlară 2026/2027</a>
+            <a href="programe_europene.html" class="active">Programe Europene</a>
+            <a href="viziune.html">Viziune</a>
+            <a href="activitati.html">Activități extracurriculare</a>
+            <a href="platforme.html">Platforme Interactive</a>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container" style="padding: 10px 0;">
+        <h2 style="text-align: center; color: var(--primary-blue); margin-bottom: 5px;">EPAS - Euroscola</h2>
+        <h3 style="text-align: center; color: var(--text-light); margin-bottom: 10px; font-size: 1rem;">Program
+            educațional finanțat de
+            Parlamentul European</h3>
+
+        <div
+            style="background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 10px; text-align: center;">
+            <!-- PDF Section Restored -->
+            <p style="margin-bottom: 10px; font-size: 1rem; font-weight: bold;">
+                Prezentarea proiectului și a activităților desfășurate.
+            </p>
+            <a href="media/Euroscola.Aurel.Vlaicu.pdf" class="btn" target="_blank"
+                style="display: inline-block; padding: 12px 24px; background-color: var(--secondary-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 5px;">
+                <i class="fas fa-expand"></i> Deschide pe tot ecranul
+            </a>
+
+            <!-- PDF Slideshow Wrapper -->
+            <div class="container" style="max-width: 1000px; margin-bottom: 30px;">
+
+                <!-- Controls -->
+                <div class="pdf-controls"
+                    style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 5px 15px; border-radius: 8px 8px 0 0; border: 1px solid #ddd; border-bottom: none;">
+                    <button id="prev" class="btn" style="padding: 8px 20px;">
+                        <i class="fas fa-chevron-left"></i> Anterioara
+                    </button>
+                    <span style="font-weight: bold; font-size: 1.1rem;">
+                        Pagina <span id="page_num"></span> din <span id="page_count"></span>
+                    </span>
+                    <button id="next" class="btn" style="padding: 8px 20px;">
+                        Următoarea <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Canvas Container -->
+                <div
+                    style="background: #525659; padding: 0; text-align: center; border-radius: 0 0 8px 8px; overflow: hidden; height: 60vh; min-height: auto; display: flex; align-items: center; justify-content: center;">
+                    <canvas id="the-canvas"
+                        style="border: none; direction: ltr; max-width: 100%; max-height: 100%; width: auto; height: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3);"></canvas>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div id="loading-info" style="text-align: center; padding: 10px; color: #666;">
+                    Se încarcă prezentarea...
+                </div>
+
+            </div>
+
+            <!-- Secțiune Video Euroscola -->
+            <div style="margin-bottom: 30px;" class="euroscola-section">
+                <h4 style="text-align: center; margin-bottom: 20px; color: var(--secondary-blue); font-size: 1.2rem;">
+                    Euroscola</h4>
+
+                <div class="grid-2-col euroscola-grid">
+                    <!-- Video 1: Euroscola (Erasmus 3) -->
+                    <div class="video-container">
+                        <video id="video-euroscola-1" style="width: 100%; border-radius: 8px;" poster="media/antet.png"
+                            controls>
+                            <source src="media/ERASMUS3.mp4" type="video/mp4">
+                            Browserul tău nu suportă elementul video.
+                        </video>
+                    </div>
+
+                    <!-- Video 2: Euroscola Activități (LTAV E1) -->
+                    <div class="video-container">
+                        <video id="video-euroscola-2" style="width: 100%; border-radius: 8px;" poster="media/antet.png"
+                            controls>
+                            <source src="media/LTAV E1.mp4" type="video/mp4">
+                            Browserul tău nu suportă elementul video.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- PDF.js Legacy script for compatibility -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+            <script>
+                window.addEventListener('load', function () {
+                    // Check if PDF.js library loaded
+                    if (typeof pdfjsLib === 'undefined') {
+                        document.getElementById('loading-info').textContent = 'Eroare: Biblioteca PDF.js nu s-a încărcat.';
+                        console.error('pdfjsLib is undefined');
+                        return;
+                    }
+
+                    // PDF.js configuration
+                    var url = 'media/Euroscola.Aurel.Vlaicu.pdf';
+
+                    // Set up PDF.js worker
+                    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js';
+
+                    var pdfDoc = null,
+                        pageNum = 1,
+                        pageRendering = false,
+                        pageNumPending = null,
+                        scale = 1.5,
+                        canvas = document.getElementById('the-canvas'),
+                        ctx = canvas.getContext('2d');
+
+                    /**
+                     * Get page info from document, resize canvas accordingly, and render page.
+                     * @param num Page number.
+                     */
+                    function renderPage(num) {
+                        pageRendering = true;
+                        // Fetch page
+                        pdfDoc.getPage(num).then(function (page) {
+                            var viewport = page.getViewport({ scale: scale });
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
+                            // Render PDF page into canvas context
+                            var renderContext = {
+                                canvasContext: ctx,
+                                viewport: viewport
+                            };
+                            var renderTask = page.render(renderContext);
+
+                            // Wait for render to finish
+                            renderTask.promise.then(function () {
+                                pageRendering = false;
+                                if (pageNumPending !== null) {
+                                    renderPage(pageNumPending);
+                                    pageNumPending = null;
+                                }
+                            });
+                        }).catch(function (error) {
+                            console.error('Error rendering page:', error);
+                        });
+
+                        // Update page counters
+                        document.getElementById('page_num').textContent = num;
+                    }
+
+                    /**
+                     * If another page rendering in progress, waits until the rendering is
+                     * finised. Otherwise, executes rendering immediately.
+                     */
+                    function queueRenderPage(num) {
+                        if (pageRendering) {
+                            pageNumPending = num;
+                        } else {
+                            renderPage(num);
+                        }
+                    }
+
+                    /**
+                     * Displays previous page.
+                     */
+                    function onPrevPage() {
+                        if (pageNum <= 1) {
+                            return;
+                        }
+                        pageNum--;
+                        queueRenderPage(pageNum);
+                    }
+                    document.getElementById('prev').addEventListener('click', onPrevPage);
+
+                    /**
+                     * Displays next page.
+                     */
+                    function onNextPage() {
+                        if (pageNum >= pdfDoc.numPages) {
+                            return;
+                        }
+                        pageNum++;
+                        queueRenderPage(pageNum);
+                    }
+                    document.getElementById('next').addEventListener('click', onNextPage);
+
+                    /**
+                     * Asynchronously downloads PDF.
+                     */
+                    pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
+                        pdfDoc = pdfDoc_;
+                        document.getElementById('page_count').textContent = pdfDoc.numPages;
+
+                        // Hide loading info
+                        document.getElementById('loading-info').style.display = 'none';
+
+                        renderPage(pageNum);
+                    }).catch(function (error) {
+                        console.error('Error loading PDF:', error);
+                        document.getElementById('loading-info').textContent = 'Eroare la încărcarea PDF: ' + error.message;
+                    });
+                });
+            </script>
+
+</body>
+
+</html>

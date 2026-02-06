@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programe Europene | Liceul Tehnologic ”Aurel Vlaicu” Galați</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Official Header -->
+    <div class="official-bar">
+        <img src="media/antet.png" alt="Antet Liceul Tehnologic Aurel Vlaicu Galați">
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <h1>Liceul Tehnologic ”Aurel Vlaicu” Galați</h1>
+            <p>Excelență în educație tehnică și tehnologică</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-links">
+            <a href="index.html">Acasă</a>
+            <a href="oferta.html">Oferta școlară 2026/2027</a>
+            <a href="programe_europene.html" class="active">Programe Europene</a>
+            <a href="viziune.html">Viziune</a>
+            <a href="activitati.html">Activități extracurriculare</a>
+            <a href="platforme.html">Platforme Interactive</a>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container" style="padding: 50px 20px;">
+        <h2>Programe Europene</h2>
+        <p>Această secțiune este în curs de actualizare. Aici vor fi prezentate proiectele și parteneriatele europene
+            ale liceului.</p>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-content">
+                    <div class="icon-box"><i class="fas fa-globe-europe"></i></div>
+                    <h3>Erasmus+</h3>
+                    <p>Oportunități de mobilitate și parteneriate strategice pentru elevi și profesori.</p>
+                    <a href="erasmus.html" class="btn">Vezi Experiențe Video</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="icon-box"><i class="fas fa-star"></i></div>
+                    <h3>EPAS - Euroscola - program educațional finanțat de Parlamentul European</h3>
+                    <p>Liceul Tehnologic "Aurel Vlaicu" Galați, Școală Ambasador a Parlamentului European.</p>
+                    <a href="epas.html" class="btn">Vezi Detalii Proiect</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script to handle video playback and global audio -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var videos = document.querySelectorAll('video');
+            videos.forEach(function (video) {
+                video.addEventListener('play', function () {
+                    // Send message to parent (start.html) to pause global music
+                    window.parent.postMessage('pauseMusic', '*');
+
+                    // Pause other videos on this page
+                    videos.forEach(function (otherVideo) {
+                        if (otherVideo !== video) {
+                            otherVideo.pause();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

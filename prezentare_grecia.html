@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prezentare Mobilitate Grecia | Erasmus+</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+            font-family: 'Outfit', sans-serif;
+            color: white;
+        }
+
+        #slideshow-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+            animation: kenburns 20s infinite alternate;
+        }
+
+        /* Subtle Ken Burns Effect */
+        @keyframes kenburns {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Controls */
+        .controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-ctrl {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-ctrl:hover {
+            color: #ffcc00;
+        }
+
+        /* Header Info */
+        .info-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-bar h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .info-bar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+
+        .info-bar a:hover {
+            background: #ffcc00;
+            color: #002d5a;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 100;
+        }
+
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #ffcc00;
+            transition: width 0.5s;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .info-bar h1 {
+                font-size: 1.2rem;
+            }
+
+            .slide {
+                background-size: contain;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Audio Player (Hidden) -->
+    <audio id="bg-music" loop>
+        <source src="media/fundal.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="info-bar">
+        <h1><i class="fas fa-globe-europe"></i> Mobilitate Erasmus Grecia (Mai 2025)</h1>
+        <a href="erasmus.html"><i class="fas fa-arrow-left"></i> Înapoi</a>
+    </div>
+
+    <div id="slideshow-container">
+        <!-- Slides will be injected here -->
+    </div>
+
+    <div class="controls">
+        <button class="btn-ctrl" id="prevBtn" title="Anterior"><i class="fas fa-step-backward"></i></button>
+        <button class="btn-ctrl" id="playBtn" title="Pauză/Redare"><i class="fas fa-pause"></i></button>
+        <button class="btn-ctrl" id="nextBtn" title="Următorul"><i class="fas fa-step-forward"></i></button>
+        <button class="btn-ctrl" id="musicBtn" title="Muzică On/Off"><i class="fas fa-volume-up"></i></button>
+    </div>
+
+    <div class="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <script>
+        // List of extracted images
+        // Excluded: image7.emf, image8.svg, image9.svg
+        // Sort order logic applied manually for natural flow if needed, but simple listing works
+        const images = [
+            'image1.png', 'image3.png', 'image4.jpeg', 'image5.jpeg', 'image6.png',
+            'image10.png', 'image11.png', 'image12.png', 'image13.png', 'image14.png',
+            'image15.png', 'image16.png', 'image17.png', 'image18.png', 'image19.png',
+            'image20.png', 'image21.png', 'image22.png', 'image23.png', 'image24.png',
+            'image25.png', 'image26.png', 'image27.png', 'image28.png', 'image29.png',
+            'image30.png', 'image31.png', 'image32.png', 'image33.png'
+        ];
+
+        const container = document.getElementById('slideshow-container');
+        let currentSlide = 0;
+        let isPlaying = true;
+        let slideInterval;
+        const slideDuration = 5000; // 5 seconds per slide
+
+        // Initialize Slides
+        images.forEach((img, index) => {
+            const div = document.createElement('div');
+            div.classList.add('slide');
+            div.style.backgroundImage = `url('media/grecia_slides/${img}')`;
+            if (index === 0) div.classList.add('active');
+            container.appendChild(div);
+        });
+
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progress-bar');
+        const music = document.getElementById('bg-music');
+        const playBtn = document.getElementById('playBtn');
+        const musicBtn = document.getElementById('musicBtn');
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            updateProgress();
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function updateProgress() {
+            const progress = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                slideInterval = setInterval(nextSlide, slideDuration);
+            } else {
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                clearInterval(slideInterval);
+            }
+        }
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play().then(() => {
+                    musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                }).catch(e => console.log("Audio play failed interaction required"));
+            } else {
+                music.pause();
+                musicBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            nextSlide();
+            resetTimer();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            prevSlide();
+            resetTimer();
+        });
+
+        playBtn.addEventListener('click', togglePlay);
+        musicBtn.addEventListener('click', toggleMusic);
+
+        function resetTimer() {
+            if (isPlaying) {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, slideDuration);
+            }
+        }
+
+        // Auto Start
+        slideInterval = setInterval(nextSlide, slideDuration);
+
+        // Try to start music on first user interaction if blocked
+        document.body.addEventListener('click', function () {
+            if (music.paused && isPlaying) {
+                // music.play(); // Optional: uncomment if aggressive autoplay wanted
+            }
+        }, { once: true });
+
+        // Pause main site music if needed (via message)
+        if (window.opener) {
+            // window.opener.postMessage('pauseMusic', '*');
+        }
+
+    </script>
+</body>
+
+</html>

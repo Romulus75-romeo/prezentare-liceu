@@ -1,0 +1,27 @@
+# Fișiere Python de procesare (opțional - doar dacă nu ai nevoie de ele pe site)
+*.pyc
+__pycache__/
+*.py
+
+# Fișiere sistem
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Fișiere temporare
+*.tmp
+*.bak
+*.swp
+*~
+
+# Directoare de build (dacă există)
+node_modules/
+dist/
+build/
+
+# Fișiere de configurare locale
+.vscode/
+.idea/
+
+# Test files
+test_*.html

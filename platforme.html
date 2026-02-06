@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platforme Interactive | Liceul Tehnologic ”Aurel Vlaicu” Galați</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Official Header -->
+    <div class="official-bar">
+        <img src="media/antet.png" alt="Antet Liceul Tehnologic Aurel Vlaicu Galați">
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <h1>Liceul Tehnologic ”Aurel Vlaicu” Galați</h1>
+            <p>Excelență în educație tehnică și tehnologică</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <button class="nav-toggle" aria-label="Deschide meniu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Acasă</a>
+                <a href="oferta.html" class="nav-cta"><i class="fas fa-graduation-cap"></i> Oferta educațională
+                    2026/2027</a>
+                <a href="programe_europene.html"><i class="fas fa-globe-europe"></i> Programe Europene</a>
+                <a href="viziune.html"><i class="fas fa-lightbulb"></i> Viziune</a>
+                <a href="activitati.html"><i class="fas fa-calendar-alt"></i> Activități extracurriculare</a>
+                <a href="platforme.html" class="active"><i class="fas fa-laptop-code"></i> Platforme</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="grid-2-col">
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="icon-box"><i class="fas fa-tools"></i></div>
+                    <h3>Asamblări Mecanice</h3>
+                    <p>Modul interactiv despre procesele de asamblare, toleranțe și ajustaje în inginerie.</p>
+                </div>
+                <a href="https://romulus75-romeo.github.io/asamblari-mecanice" class="btn" target="_blank">Deschide
+                    Platforma</a>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="icon-box"><i class="fas fa-fire"></i></div>
+                    <h3>Prelucrări la Cald</h3>
+                    <p>Ghid vizual și interactiv despre turnare, forjare și tratamente termice.</p>
+                </div>
+                <a href="https://romulus75-romeo.github.io/prelucari-cald" class="btn" target="_blank">Deschide
+                    Platforma</a>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="icon-box"><i class="fas fa-ruler-combined"></i></div>
+                    <h3>Măsurări Tehnice</h3>
+                    <p>Exerciții de utilizare a șublerului, micrometrului și altor instrumente de precizie.</p>
+                </div>
+                <a href="https://romulus75-romeo.github.io/masurari-tehnice" class="btn" target="_blank">Deschide
+                    Platforma</a>
+            </div>
+
+            <!-- YouTube Channel Card -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="icon-box"><i class="fab fa-youtube" style="color: #FF0000;"></i></div>
+                    <h3>Canal YouTube</h3>
+                    <p>Accesați canalul Prof. Ing. Popescu Romulus pentru tutoriale video și resurse educaționale.</p>
+                </div>
+                <a href="http://www.youtube.com/@ROMULUSPOPESCU13" class="btn" target="_blank"
+                    style="background-color: #FF0000;">Accesează Canalul</a>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025-2026 Liceul Tehnologic ”Aurel Vlaicu” Galați</p>
+            <p>Director: Prof. Ing. Silviana Ciupercă</p>
+            <p>Site realizat de Prof. Ing. Popescu Romulus</p>
+            <p><small>Platformă realizată pentru susținerea educației tehnice în România.</small></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const icon = navToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
