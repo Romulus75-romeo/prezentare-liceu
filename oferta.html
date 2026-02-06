@@ -48,6 +48,48 @@
     <!-- PDF Slideshow Wrapper -->
     <!-- PDF Slideshow Wrapper -->
     <!-- Unified Presentation Layout -->
+    <!-- PDF Viewer Section -->
+    <div class="presentation-main" style="margin: 0 auto 40px; max-width: 900px; padding: 0 10px;">
+        <div
+            style="background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; text-align: center;">
+            <p style="margin-bottom: 10px; font-size: 1rem; font-weight: bold;">
+                Prezentarea proiectului și a activităților desfășurate.
+            </p>
+            <button id="fullscreen-btn" class="btn"
+                style="display: inline-block; padding: 12px 24px; background-color: var(--secondary-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 5px;">
+                <i class="fas fa-expand"></i> Deschide pe tot ecranul
+            </button>
+        </div>
+
+        <div id="pdf-main-container" class="pdf-compact">
+            <!-- Controls -->
+            <div class="pdf-controls" style="justify-content: center;">
+                <button id="prev" class="btn" style="padding: 8px 15px;">
+                    <i class="fas fa-chevron-left"></i> Prev
+                </button>
+                <span style="font-weight: bold; font-size: 1.1rem; color: var(--secondary-blue);">
+                    <span id="page_num"></span> / <span id="page_count"></span>
+                </span>
+
+                <button id="next" class="btn" style="padding: 8px 15px;">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Canvas Container -->
+            <div class="pdf-canvas-container">
+                <canvas id="the-canvas"
+                    style="border: 1px solid black; direction: ltr; max-width: 100%; height: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3);"></canvas>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loading-info" style="text-align: center; padding: 10px; color: #666; display: none;">
+                Se încarcă prezentarea...
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Grid Layout -->
     <div class="presentation-layout">
 
         <!-- Left Side: General Presentation -->
@@ -63,49 +105,7 @@
             </div>
         </div>
 
-        <!-- Center: PDF Viewer -->
-        <div class="presentation-main">
-            <div
-                style="background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; text-align: center;">
-                <p style="margin-bottom: 10px; font-size: 1rem; font-weight: bold;">
-                    Prezentarea proiectului și a activităților desfășurate.
-                </p>
-                <button id="fullscreen-btn" class="btn"
-                    style="display: inline-block; padding: 12px 24px; background-color: var(--secondary-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 5px;">
-                    <i class="fas fa-expand"></i> Deschide pe tot ecranul
-                </button>
-            </div>
 
-            <div id="pdf-main-container" class="pdf-compact">
-                <!-- Controls -->
-                <div class="pdf-controls" style="justify-content: center;">
-                    <button id="prev" class="btn" style="padding: 8px 15px;">
-                        <i class="fas fa-chevron-left"></i> Prev
-                    </button>
-                    <span style="font-weight: bold; font-size: 1.1rem; color: var(--secondary-blue);">
-                        <span id="page_num"></span> / <span id="page_count"></span>
-                    </span>
-
-                    <button id="next" class="btn" style="padding: 8px 15px;">
-                        Next <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-
-                <!-- Canvas Container -->
-                <div class="pdf-canvas-container">
-                    <canvas id="the-canvas"
-                        style="border: 1px solid black; direction: ltr; max-width: 100%; height: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3);"></canvas>
-                </div>
-
-                <!-- Download Footer -->
-
-
-                <!-- Loading Indicator -->
-                <div id="loading-info" style="text-align: center; padding: 10px; color: #666; display: none;">
-                    Se încarcă prezentarea...
-                </div>
-            </div>
-        </div>
 
         <!-- Right Side: Detailed Presentation -->
         <div class="presentation-side">

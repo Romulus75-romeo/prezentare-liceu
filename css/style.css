@@ -779,67 +779,45 @@ footer small {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Three-column presentation layout */
+/* Video Row Layout (PDF is now above this) */
 .presentation-layout {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: flex-start;
-    gap: 15px;
-    max-width: 1600px;
+    gap: 30px;
+    max-width: 1400px;
     margin: 0 auto 60px;
-    padding: 0 10px;
+    padding: 0 20px;
 }
 
 .presentation-side {
-    flex: 1 1 250px;
-    /* Grow, shrink, basis */
-    max-width: 350px;
-    min-width: 250px;
+    flex: 1 1 450px;
+    /* Basis for side-by-side on desktop */
+    max-width: 650px;
+    min-width: 300px;
 }
 
-.presentation-main {
-    flex: 2 1 450px;
-    /* Takes up more space */
-    max-width: 800px;
-    min-width: 320px;
-    /* Allow shrinking on mobile */
-}
-
-/* Adjust video card for side column */
+/* Ensure video card fills the side container */
 .presentation-side .video-card {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
-@media (max-width: 1024px) {
+/* Deprecated within this layout, but class used above - styles handled inline or via utility */
 
-    /* Below this width, switch to stack or 2+1 layout */
+@media (max-width: 950px) {
+
+    /* Stack videos when screen is too narrow for side-by-side */
     .presentation-layout {
         flex-direction: column;
         align-items: center;
     }
 
-    .presentation-main {
-        order: 1;
-        width: 100%;
-        margin-bottom: 30px;
-    }
-
     .presentation-side {
-        order: 2;
         width: 100%;
         max-width: 700px;
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 768px) {
-    .presentation-side {
-        flex-direction: column;
+        margin-bottom: 20px;
     }
 }
 
