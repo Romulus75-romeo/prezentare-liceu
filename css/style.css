@@ -785,21 +785,21 @@ footer small {
     flex-flow: row wrap;
     justify-content: center;
     align-items: flex-start;
-    gap: 20px;
+    gap: 15px;
     max-width: 1600px;
     margin: 0 auto 60px;
     padding: 0 10px;
 }
 
 .presentation-side {
-    flex: 1 1 300px;
+    flex: 1 1 250px;
     /* Grow, shrink, basis */
-    max-width: 400px;
-    min-width: 280px;
+    max-width: 350px;
+    min-width: 250px;
 }
 
 .presentation-main {
-    flex: 2 1 600px;
+    flex: 2 1 450px;
     /* Takes up more space */
     max-width: 800px;
     min-width: 320px;
@@ -812,7 +812,7 @@ footer small {
     margin-bottom: 20px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1024px) {
 
     /* Below this width, switch to stack or 2+1 layout */
     .presentation-layout {
