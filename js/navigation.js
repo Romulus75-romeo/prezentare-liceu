@@ -16,11 +16,24 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        e.preventDefault();
-        const url = link.href;
+        // Check for file protocol - bypass SPA to avoid CORS issues locally
+        if (window.location.protocol === 'file:') {
+            window.location.href = url;
+            return;
+        }
 
-        // Push state for history
-        history.pushState(null, '', url);
+        e.preventDefault();
+
+        try {
+            // Push state for history
+            history.pushState(null, '', url);
+        } catch (err) {
+            console.warn('pushState failed:', err);
+            // Fallback to standard nav if pushState fails (though getting here means protocol wasn't file:)
+            window.location.href = url;
+            return;
+        }
+
         loadPage(url);
     });
 
@@ -105,6 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.scrollTo(0, 0);
 
             })
-            .catch(err => console.error('Error loading page:', err));
+            .catch(err => {
+                console.error('Error loading page (likely CORS or file:// protocol), falling back to standard navigation:', err);
+                window.location.href = url;
+            });
     }
 });

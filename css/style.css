@@ -927,3 +927,284 @@ footer small {
     height: 5px;
     accent-color: white;
 }
+
+/* --- School Offer Section Styles (PDF REPLICA) --- */
+.offer-html-container {
+    background: #e6e6fa;
+    /* Light lavender background matching PDF */
+    padding: 60px 40px;
+    border-radius: 0;
+    /* Removing border radius for paper look or keeping it subtle */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Times New Roman', Times, serif;
+    /* Serif font matching PDF */
+    color: #333;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.offer-header {
+    text-align: left;
+    /* Aligned left as per PDF */
+    margin-bottom: 40px;
+    position: relative;
+    border-bottom: none;
+    /* Removed border */
+    padding-bottom: 0;
+}
+
+.offer-logo {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    max-width: 120px;
+    height: auto;
+    border-radius: 50%;
+    /* If logo is circular */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.offer-header h3 {
+    color: #000;
+    font-size: 1.4rem;
+    margin: 0 0 10px 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: normal;
+}
+
+.offer-slogan {
+    background: #6a0dad;
+    /* Standard Purple */
+    color: white;
+    display: inline-block;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.2rem;
+    border-radius: 0;
+    /* Rectangular as in PDF */
+    box-shadow: none;
+    letter-spacing: 0.5px;
+    transform: skewX(-10deg);
+    /* Slight italic skew effect for container */
+}
+
+.offer-slogan span {
+    display: block;
+    transform: skewX(10deg);
+    /* Counter-skew text so it's readable */
+}
+
+.offer-title-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.offer-title-section h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.offer-title-section h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.8rem;
+    font-style: italic;
+    font-weight: bold;
+    color: #000;
+    margin-top: 0;
+}
+
+.intro-text {
+    font-size: 1.2rem;
+    text-align: left;
+    margin-bottom: 20px;
+    color: #6a0dad;
+    /* Purple intro text */
+}
+
+.offer-list {
+    list-style-type: disc;
+    padding-left: 40px;
+    margin-bottom: 30px;
+}
+
+.offer-list li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #6a0dad;
+    /* Purple text for list items */
+}
+
+.offer-list li strong {
+    font-weight: bold;
+}
+
+.highlight-box {
+    background-color: #f9f9f9;
+    /* Very light background for contrast */
+    color: #2e8b57;
+    /* SeaGreen text matching PDF */
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.2rem;
+    padding: 20px;
+    margin: 30px 0;
+    text-align: justify;
+    border-left: 5px solid #2e8b57;
+    /* Decorative border matching theme */
+}
+
+.principles-section h4 {
+    color: #2e8b57;
+    /* Green color for Principles header */
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.principles-list {
+    list-style-type: none;
+    /* Custom bullets */
+    padding-left: 20px;
+}
+
+.principles-list li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #2e8b57;
+    /* Green text */
+    position: relative;
+    padding-left: 15px;
+}
+
+/* Custom green square bullet */
+.principles-list li::before {
+    content: "■";
+    color: #2e8b57;
+    position: absolute;
+    left: -15px;
+    font-size: 0.8em;
+    top: 2px;
+}
+
+.principles-list li strong {
+    font-weight: bold;
+}
+
+/* Placeholder and New Section Styles */
+.offer-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px dashed #ccc;
+}
+
+.offer-section h4 {
+    color: var(--primary-blue);
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent-gold);
+    display: inline-block;
+}
+
+.placeholder {
+    background: #fff3cd;
+    border: 2px dashed #e0a800;
+    padding: 30px;
+    text-align: center;
+    color: #856404;
+    border-radius: var(--radius-md);
+    margin-bottom: 30px;
+}
+
+.placeholder p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Offer Table Styles */
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 30px;
+}
+
+.offer-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+}
+
+.offer-table th,
+.offer-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.offer-table th {
+    background-color: var(--primary-blue);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.offer-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.offer-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    font-family: sans-serif;
+}
+
+.badge.dual {
+    background-color: #28a745;
+    /* Green for Dual */
+}
+
+.badge.stat {
+    background-color: #007bff;
+    /* Blue for Stat */
+}
+
+/* Partners Grid */
+.partners-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.partner-item {
+    background: white;
+    border: 1px solid #eee;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: var(--secondary-blue);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+    font-family: sans-serif;
+}
+
+.partner-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: var(--light-bg);
+}
