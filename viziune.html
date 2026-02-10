@@ -175,6 +175,17 @@
             });
         });
     </script>
+    <!-- Audio Player -->
+    <div id="audio-controls">
+        <i class="fas fa-play" id="play-icon"></i>
+        <span id="control-text">Start Muzică</span>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+    </div>
+    <audio id="bg-music" loop>
+        <source src="media/background_music.mpeg" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script src="js/audio.js"></script>
 </body>
 
 </html>
