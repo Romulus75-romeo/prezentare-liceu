@@ -93,90 +93,15 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025-2026 Liceul Tehnologic ”Aurel Vlaicu” Galați</p>
+            <p>&copy; 2025-2026 Liceul Tehnologic "Aurel Vlaicu" Galați</p>
             <p>Director: Prof. Ing. Silviana Ciupercă</p>
             <p>Site realizat de Prof. Ing. Popescu Romulus</p>
             <p><small>Platformă realizată pentru susținerea educației tehnice în România.</small></p>
         </div>
     </footer>
 
-    <script>
-        // Mobile Menu Toggle
-        function initMobileMenu() {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navLinks = document.querySelector('.nav-links');
-
-            if (navToggle) {
-                // Remove existing listeners to avoid duplicates if any
-                const newNavToggle = navToggle.cloneNode(true);
-                navToggle.parentNode.replaceChild(newNavToggle, navToggle);
-
-                newNavToggle.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                    const icon = newNavToggle.querySelector('i');
-                    if (navLinks.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                });
-            }
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initMobileMenu);
-        } else {
-            initMobileMenu();
-        }
-    </script>
-
-    <!-- Script to handle video playback and global audio -->
-    <script>
-        function initVideoHandlers() {
-            var videos = document.querySelectorAll('video');
-            videos.forEach(function (video) {
-                video.addEventListener('play', function () {
-                    // Start fullscreen on play
-                    try {
-                        if (video.requestFullscreen) {
-                            video.requestFullscreen();
-                        } else if (video.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-                            video.webkitRequestFullscreen();
-                        } else if (video.mozRequestFullScreen) { /* Firefox */
-                            video.mozRequestFullScreen();
-                        } else if (video.msRequestFullscreen) { /* IE/Edge */
-                            video.msRequestFullscreen();
-                        } else if (video.webkitEnterFullscreen) { /* iOS */
-                            video.webkitEnterFullscreen();
-                        }
-                    } catch (err) {
-                        console.log("Fullscreen request failed: " + err);
-                    }
-
-                    // Pause global music
-                    if (window.pauseBackgroundMusic) {
-                        window.pauseBackgroundMusic();
-                    }
-
-                    // Pause other videos on this page
-                    videos.forEach(function (otherVideo) {
-                        if (otherVideo !== video) {
-                            otherVideo.pause();
-                        }
-                    });
-                });
-            });
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initVideoHandlers);
-        } else {
-            initVideoHandlers();
-        }
-    </script>
     <!-- Audio Player -->
+
     <div id="audio-controls">
         <i class="fas fa-play" id="play-icon"></i>
         <span id="control-text">Start Muzică</span>

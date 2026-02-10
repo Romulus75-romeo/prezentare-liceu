@@ -28,15 +28,23 @@
 
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="container nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="oferta.html">Oferta școlară 2026/2027</a>
-            <a href="programe_europene.html" class="active">Programe Europene</a>
-            <a href="viziune.html">Viziune</a>
-            <a href="activitati.html">Activități extracurriculare</a>
-            <a href="platforme.html">Platforme Interactive</a>
+        <div class="container nav-container">
+            <button class="nav-toggle" aria-label="Deschide meniu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Acasă</a>
+                <a href="oferta.html" class="nav-cta"><i class="fas fa-graduation-cap"></i> Oferta educațională
+                    2026/2027</a>
+                <a href="programe_europene.html" class="active"><i class="fas fa-globe-europe"></i> Programe
+                    Europene</a>
+                <a href="viziune.html"><i class="fas fa-lightbulb"></i> Viziune</a>
+                <a href="activitati.html"><i class="fas fa-calendar-alt"></i> Activități extracurriculare</a>
+                <a href="platforme.html"><i class="fas fa-laptop-code"></i> Platforme</a>
+            </div>
         </div>
     </nav>
+
 
     <!-- Content -->
     <div class="container" style="padding: 50px 20px;">
@@ -65,33 +73,7 @@
         </div>
     </div>
 
-    <!-- Script to handle video playback and global audio -->
-    <script>
-        function initVideoHandlers() {
-            var videos = document.querySelectorAll('video');
-            videos.forEach(function (video) {
-                video.addEventListener('play', function () {
-                    // Pause global music
-                    if (window.pauseBackgroundMusic) {
-                        window.pauseBackgroundMusic();
-                    }
 
-                    // Pause other videos on this page
-                    videos.forEach(function (otherVideo) {
-                        if (otherVideo !== video) {
-                            otherVideo.pause();
-                        }
-                    });
-                });
-            });
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initVideoHandlers);
-        } else {
-            initVideoHandlers();
-        }
-    </script>
     <!-- Audio Player -->
     <div id="audio-controls">
         <i class="fas fa-play" id="play-icon"></i>

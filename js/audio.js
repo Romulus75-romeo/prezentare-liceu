@@ -62,15 +62,41 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // Auto-pause when any video starts playing
+    // Auto-pause when any video starts playing + fullscreen + pause other videos
     function attachVideoListeners() {
         const videos = document.querySelectorAll('video');
         videos.forEach(video => {
             video.addEventListener('play', () => {
+                // Pause background music
                 window.pauseBackgroundMusic();
+
+                // Start fullscreen on play
+                try {
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                        video.webkitRequestFullscreen();
+                    } else if (video.mozRequestFullScreen) { /* Firefox */
+                        video.mozRequestFullScreen();
+                    } else if (video.msRequestFullscreen) { /* IE/Edge */
+                        video.msRequestFullscreen();
+                    } else if (video.webkitEnterFullscreen) { /* iOS */
+                        video.webkitEnterFullscreen();
+                    }
+                } catch (err) {
+                    console.log("Fullscreen request failed: " + err);
+                }
+
+                // Pause other videos on this page
+                videos.forEach(otherVideo => {
+                    if (otherVideo !== video) {
+                        otherVideo.pause();
+                    }
+                });
             });
         });
     }
+
 
     // Initial attach
     attachVideoListeners();

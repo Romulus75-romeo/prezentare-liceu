@@ -1,5 +1,33 @@
 
+// Mobile Menu Toggle
+function initMobileMenu() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (navToggle) {
+        // Remove existing listeners to avoid duplicates if any
+        const newNavToggle = navToggle.cloneNode(true);
+        navToggle.parentNode.replaceChild(newNavToggle, navToggle);
+
+        newNavToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = newNavToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize mobile menu
+    initMobileMenu();
+
+
     // Intercept clicks on internal links
     document.addEventListener('click', e => {
         const link = e.target.closest('a');
