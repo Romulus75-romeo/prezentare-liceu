@@ -44,6 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Extract URL from the link
+        const url = link.href;
+
         // Check for file protocol - bypass SPA to avoid CORS issues locally
         if (window.location.protocol === 'file:') {
             window.location.href = url;
@@ -64,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         loadPage(url);
     });
+
 
     // Handle back/forward navigation
     window.addEventListener('popstate', () => {
