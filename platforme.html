@@ -106,14 +106,18 @@
 
     <script>
         // Mobile Menu Toggle
-        document.addEventListener('DOMContentLoaded', () => {
+        function initMobileMenu() {
             const navToggle = document.querySelector('.nav-toggle');
             const navLinks = document.querySelector('.nav-links');
 
             if (navToggle) {
-                navToggle.addEventListener('click', () => {
+                // Remove existing listeners to avoid duplicates if any
+                const newNavToggle = navToggle.cloneNode(true);
+                navToggle.parentNode.replaceChild(newNavToggle, navToggle);
+
+                newNavToggle.addEventListener('click', () => {
                     navLinks.classList.toggle('active');
-                    const icon = navToggle.querySelector('i');
+                    const icon = newNavToggle.querySelector('i');
                     if (navLinks.classList.contains('active')) {
                         icon.classList.remove('fa-bars');
                         icon.classList.add('fa-times');
@@ -123,7 +127,13 @@
                     }
                 });
             }
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileMenu);
+        } else {
+            initMobileMenu();
+        }
     </script>
 
     <!-- Audio Player -->
@@ -137,6 +147,7 @@
         Your browser does not support the audio element.
     </audio>
     <script src="js/audio.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 
 </html>

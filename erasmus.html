@@ -148,14 +148,18 @@
 
     <script>
         // Mobile Menu Toggle
-        document.addEventListener('DOMContentLoaded', () => {
+        function initMobileMenu() {
             const navToggle = document.querySelector('.nav-toggle');
             const navLinks = document.querySelector('.nav-links');
 
             if (navToggle) {
-                navToggle.addEventListener('click', () => {
+                // Remove existing listeners to avoid duplicates if any
+                const newNavToggle = navToggle.cloneNode(true);
+                navToggle.parentNode.replaceChild(newNavToggle, navToggle);
+
+                newNavToggle.addEventListener('click', () => {
                     navLinks.classList.toggle('active');
-                    const icon = navToggle.querySelector('i');
+                    const icon = newNavToggle.querySelector('i');
                     if (navLinks.classList.contains('active')) {
                         icon.classList.remove('fa-bars');
                         icon.classList.add('fa-times');
@@ -165,7 +169,13 @@
                     }
                 });
             }
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileMenu);
+        } else {
+            initMobileMenu();
+        }
     </script>
 
     <!-- Script to handle video playback and global audio -->
@@ -174,8 +184,10 @@
             var videos = document.querySelectorAll('video');
             videos.forEach(function (video) {
                 video.addEventListener('play', function () {
-                    // Send message to parent (start.html) to pause global music
-                    window.parent.postMessage('pauseMusic', '*');
+                    // Pause global music
+                    if (window.pauseBackgroundMusic) {
+                        window.pauseBackgroundMusic();
+                    }
 
                     // Pause other videos on this page
                     videos.forEach(function (otherVideo) {
@@ -185,31 +197,13 @@
                     });
                 });
             });
-        });
-    </script>
+        }
 
-    <script>
-        // Auto-fullscreen for videos on play
-        var videos = document.querySelectorAll('video');
-        videos.forEach(function (video) {
-            video.addEventListener('play', function () {
-                try {
-                    if (video.requestFullscreen) {
-                        video.requestFullscreen();
-                    } else if (video.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-                        video.webkitRequestFullscreen();
-                    } else if (video.mozRequestFullScreen) { /* Firefox */
-                        video.mozRequestFullScreen();
-                    } else if (video.msRequestFullscreen) { /* IE/Edge */
-                        video.msRequestFullscreen();
-                    } else if (video.webkitEnterFullscreen) { /* iOS */
-                        video.webkitEnterFullscreen();
-                    }
-                } catch (err) {
-                    console.log("Fullscreen request failed: " + err);
-                }
-            });
-        });
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initVideoHandlers);
+        } else {
+            initVideoHandlers();
+        }
     </script>
     <!-- Audio Player -->
     <div id="audio-controls">
@@ -222,6 +216,7 @@
         Your browser does not support the audio element.
     </audio>
     <script src="js/audio.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 
 </html>

@@ -67,12 +67,14 @@
 
     <!-- Script to handle video playback and global audio -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        function initVideoHandlers() {
             var videos = document.querySelectorAll('video');
             videos.forEach(function (video) {
                 video.addEventListener('play', function () {
-                    // Send message to parent (start.html) to pause global music
-                    window.parent.postMessage('pauseMusic', '*');
+                    // Pause global music
+                    if (window.pauseBackgroundMusic) {
+                        window.pauseBackgroundMusic();
+                    }
 
                     // Pause other videos on this page
                     videos.forEach(function (otherVideo) {
@@ -82,7 +84,13 @@
                     });
                 });
             });
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initVideoHandlers);
+        } else {
+            initVideoHandlers();
+        }
     </script>
     <!-- Audio Player -->
     <div id="audio-controls">
@@ -95,6 +103,7 @@
         Your browser does not support the audio element.
     </audio>
     <script src="js/audio.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 
 </html>

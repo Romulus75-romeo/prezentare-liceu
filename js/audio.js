@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Check if elements exist
     if (!audio || !controls) return;
 
+
     let isPlaying = false;
 
     // Try autoplay on load
@@ -62,10 +63,24 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // Auto-pause when any video starts playing
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-        video.addEventListener('play', () => {
-            window.pauseBackgroundMusic();
+    function attachVideoListeners() {
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.addEventListener('play', () => {
+                window.pauseBackgroundMusic();
+            });
         });
+    }
+
+    // Initial attach
+    attachVideoListeners();
+
+    // Re-attach on page navigation (SPA)
+    window.addEventListener('page-changed', () => {
+        attachVideoListeners();
+        // Also re-check controls in case they were re-rendered (though we try to preserve them)
+        // If controls were inside the replaced content, we'd need to re-bind them to the audio object.
+        // But our navigation script preserves #audio-controls, so this might not be needed for controls.
+        // However, if the page has *new* videos, we MUST attach listeners.
     });
 });

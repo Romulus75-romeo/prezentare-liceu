@@ -313,12 +313,44 @@
                 video.play();
                 overlay.style.display = 'none';
             }
+            ```
         }
     </script>
 
     <!-- Script to handle video playback -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        // Mobile Menu Toggle
+        function initMobileMenu() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (navToggle) {
+                 // Remove existing listeners to avoid duplicates if any
+                const newNavToggle = navToggle.cloneNode(true);
+                navToggle.parentNode.replaceChild(newNavToggle, navToggle);
+
+                newNavToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const icon = newNavToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileMenu);
+        } else {
+            initMobileMenu();
+        }
+    </script>
+    <script>
+        function initVideoHandlers() {
             var videos = document.querySelectorAll('video');
             videos.forEach(function (video) {
                 video.addEventListener('play', function () {
@@ -339,8 +371,10 @@
                         console.log("Fullscreen request failed: " + err);
                     }
 
-                    // Send message to parent to pause global music
-                    window.parent.postMessage('pauseMusic', '*');
+                    // Pause global music
+                    if (window.pauseBackgroundMusic) {
+                        window.pauseBackgroundMusic();
+                    }
 
                     // Pause other videos on this page
                     videos.forEach(function (otherVideo) {
@@ -350,7 +384,13 @@
                     });
                 });
             });
-        });
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initVideoHandlers);
+        } else {
+            initVideoHandlers();
+        }
     </script>
     <!-- Audio Player -->
     <div id="audio-controls">
@@ -363,6 +403,7 @@
         Your browser does not support the audio element.
     </audio>
     <script src="js/audio.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 
 </html>

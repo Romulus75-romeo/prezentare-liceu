@@ -49,22 +49,34 @@
 
     <script>
         // Mobile Menu Toggle
-        document.addEventListener('DOMContentLoaded', () => {
+        function initMobileMenu() {
             const navToggle = document.querySelector('.nav-toggle');
             const navLinks = document.querySelector('.nav-links');
 
-            navToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                const icon = navToggle.querySelector('i');
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-        });
+            if (navToggle) {
+                // Remove existing listeners to avoid duplicates if any
+                const newNavToggle = navToggle.cloneNode(true);
+                navToggle.parentNode.replaceChild(newNavToggle, navToggle);
+
+                newNavToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const icon = newNavToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileMenu);
+        } else {
+            initMobileMenu();
+        }
     </script>
 
     <!-- Hero Section -->
@@ -108,6 +120,7 @@
         Your browser does not support the audio element.
     </audio>
     <script src="js/audio.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 
 </html>
