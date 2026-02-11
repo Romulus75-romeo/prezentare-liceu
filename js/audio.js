@@ -11,19 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let isPlaying = false;
 
-    // Try autoplay on load
+    // Set initial volume, but don't autoplay
     audio.volume = 0.5;
-    var promise = audio.play();
-    if (promise !== undefined) {
-        promise.then(_ => {
-            isPlaying = true;
-            updateUI();
-        }).catch(error => {
-            console.log("Autoplay prevented");
-            isPlaying = false;
-            updateUI();
-        });
-    }
+    updateUI(); // Set initial UI to show "Start Muzică"
 
     controls.addEventListener("click", function (e) {
         // Prevent toggling when clicking the slider

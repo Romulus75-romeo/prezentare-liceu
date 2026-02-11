@@ -90,7 +90,16 @@
             <!-- Video Grid -->
             <div class="grid-2-col">
 
-
+                <!-- Video 0: Erasmus++ (NEW - First) -->
+                <div>
+                    <h4 style="margin-bottom: 10px; color: var(--secondary-blue);">Erasmus++</h4>
+                    <div class="video-container" style="margin: 0; box-shadow: var(--shadow-md);">
+                        <video controls poster="media/Erasmus++_thumb.jpg">
+                            <source src="media/Erasmus++.mp4" type="video/mp4">
+                            Browserul tău nu suportă elementul video.
+                        </video>
+                    </div>
+                </div>
 
                 <!-- Video 1: Experiente (Existing) -->
                 <div>
@@ -197,13 +206,7 @@
                     });
                 });
             });
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initVideoHandlers);
-        } else {
-            initVideoHandlers();
-        }
+        });
     </script>
     <!-- Audio Player -->
     <div id="audio-controls">

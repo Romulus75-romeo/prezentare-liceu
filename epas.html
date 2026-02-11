@@ -48,7 +48,8 @@
 
         <div
             style="background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 10px; text-align: center;">
-            <!-- PDF Section Restored -->
+
+            <!-- Title and Buttons -->
             <p style="margin-bottom: 10px; font-size: 1rem; font-weight: bold;">
                 Prezentarea proiectului și a activităților desfășurate.
             </p>
@@ -56,200 +57,73 @@
                 style="display: inline-block; padding: 12px 24px; background-color: var(--secondary-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 5px;">
                 <i class="fas fa-expand"></i> Deschide pe tot ecranul
             </a>
+            <a href="media/Euroscola.Aurel.Vlaicu.pdf" class="btn" download
+                style="display: inline-block; padding: 12px 24px; background-color: var(--primary-blue); color: white; text-decoration: none; border-radius: 6px; font-weight: bold; margin: 5px;">
+                <i class="fas fa-download"></i> Descarcă PDF
+            </a>
 
-            <!-- PDF Slideshow Wrapper -->
-            <div class="container" style="max-width: 1000px; margin-bottom: 30px;">
+            <!-- 3-Column Layout: Small Video | Large PDF | Small Video -->
+            <div
+                style="display: flex; gap: 20px; margin-top: 30px; margin-bottom: 30px; flex-wrap: wrap; align-items: flex-start; justify-content: center;">
 
-                <!-- Controls -->
-                <div class="pdf-controls"
-                    style="display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 5px 15px; border-radius: 8px 8px 0 0; border: 1px solid #ddd; border-bottom: none;">
-                    <button id="prev" class="btn" style="padding: 8px 20px;">
-                        <i class="fas fa-chevron-left"></i> Anterioara
-                    </button>
-                    <span style="font-weight: bold; font-size: 1.1rem;">
-                        Pagina <span id="page_num"></span> din <span id="page_count"></span>
-                    </span>
-                    <button id="next" class="btn" style="padding: 8px 20px;">
-                        Următoarea <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-
-                <!-- Canvas Container -->
-                <div
-                    style="background: #525659; padding: 0; text-align: center; border-radius: 0 0 8px 8px; overflow: hidden; height: 60vh; min-height: auto; display: flex; align-items: center; justify-content: center;">
-                    <canvas id="the-canvas"
-                        style="border: none; direction: ltr; max-width: 100%; max-height: 100%; width: auto; height: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3);"></canvas>
-                </div>
-
-                <!-- Loading Indicator -->
-                <div id="loading-info" style="text-align: center; padding: 10px; color: #666;">
-                    Se încarcă prezentarea...
-                </div>
-
-            </div>
-
-            <!-- Secțiune Video Euroscola -->
-            <div style="margin-bottom: 30px;" class="euroscola-section">
-                <h4 style="text-align: center; margin-bottom: 20px; color: var(--secondary-blue); font-size: 1.2rem;">
-                    Euroscola</h4>
-
-                <div class="grid-2-col euroscola-grid">
-                    <!-- Video 1: Euroscola (Erasmus 3) -->
-                    <div class="video-container">
-                        <video id="video-euroscola-1" style="width: 100%; border-radius: 8px;"
+                <!-- Left Video: Euroscola (Erasmus 3) - Small YouTube Style -->
+                <div style="flex: 0 0 auto; width: 200px; max-width: 200px;">
+                    <h4
+                        style="text-align: center; margin-bottom: 8px; color: var(--secondary-blue); font-size: 0.85rem;">
+                        Video 1
+                    </h4>
+                    <!-- 16:9 Aspect Ratio Container (YouTube style) -->
+                    <div
+                        style="position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 ratio */ background: #000; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                        <video id="video-euroscola-1"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;"
                             poster="media/ERASMUS3_thumb.jpg" controls>
                             <source src="media/ERASMUS3.mp4" type="video/mp4">
                             Browserul tău nu suportă elementul video.
                         </video>
                     </div>
+                </div>
 
-                    <!-- Video 2: Euroscola Activități (LTAV E1) -->
-                    <div class="video-container">
-                        <video id="video-euroscola-2" style="width: 100%; border-radius: 8px;"
+
+                <!-- Center: PDF Presentation - Large -->
+                <div style="flex: 1; min-width: 450px; max-width: 800px;">
+                    <h4
+                        style="text-align: center; margin-bottom: 15px; color: var(--primary-blue); font-size: 1.3rem; font-weight: bold;">
+                        Prezentare Euroscola
+                    </h4>
+                    <iframe src="media/Euroscola.Aurel.Vlaicu.pdf#view=FitH"
+                        style="width: 100%; height: 68vh; min-height: 520px; border: 2px solid #ddd; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
+                        title="Prezentare Euroscola">
+                        <p style="padding: 20px; text-align: center;">
+                            Browser-ul dumneavoastră nu suportă vizualizarea PDF-urilor.
+                            <a href="media/Euroscola.Aurel.Vlaicu.pdf"
+                                style="color: var(--primary-blue); font-weight: bold;">Descarcă PDF-ul aici</a>
+                        </p>
+                    </iframe>
+                </div>
+
+                <!-- Right Video: Euroscola Activități (LTAV E1) - Small YouTube Style -->
+                <div style="flex: 0 0 auto; width: 200px; max-width: 200px;">
+                    <h4
+                        style="text-align: center; margin-bottom: 8px; color: var(--secondary-blue); font-size: 0.85rem;">
+                        Video 2
+                    </h4>
+                    <!-- 16:9 Aspect Ratio Container (YouTube style) -->
+                    <div
+                        style="position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 ratio */ background: #000; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                        <video id="video-euroscola-2"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;"
                             poster="media/LTAV E1_thumb.jpg" controls>
                             <source src="media/LTAV E1.mp4" type="video/mp4">
                             Browserul tău nu suportă elementul video.
                         </video>
                     </div>
                 </div>
+
             </div>
 
-            <!-- PDF.js Legacy script for compatibility -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
-            <script>
-                function initPDF() {
-                    // Check if PDF.js library loaded
-                    if (typeof pdfjsLib === 'undefined') {
-                        const loadingInfo = document.getElementById('loading-info');
-                        if (loadingInfo) loadingInfo.textContent = 'Eroare: Biblioteca PDF.js nu s-a încărcat.';
-                        console.error('pdfjsLib is undefined');
-                        return;
-                    }
 
-                    // PDF.js configuration
-                    var url = 'media/Euroscola.Aurel.Vlaicu.pdf';
 
-                    // Set up PDF.js worker
-                    pdfjsLib.GlobalWorkerOptions.workerSrc =
-                        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js';
-
-                    var pdfDoc = null,
-                        pageNum = 1,
-                        pageRendering = false,
-                        pageNumPending = null,
-                        scale = 1.5,
-                        canvas = document.getElementById('the-canvas'),
-                        ctx = canvas.getContext('2d');
-
-                    /**
-                     * Get page info from document, resize canvas accordingly, and render page.
-                     * @param num Page number.
-                     */
-                    function renderPage(num) {
-                        pageRendering = true;
-                        // Fetch page
-                        pdfDoc.getPage(num).then(function (page) {
-                            var viewport = page.getViewport({
-                                scale: scale
-                            });
-                            canvas.height = viewport.height;
-                            canvas.width = viewport.width;
-                            // Render PDF page into canvas context
-                            var renderContext = {
-                                canvasContext: ctx,
-                                viewport: viewport
-                            };
-                            var renderTask = page.render(renderContext);
-
-                            // Wait for render to finish
-                            renderTask.promise.then(function () {
-                                pageRendering = false;
-                                if (pageNumPending !== null) {
-                                    renderPage(pageNumPending);
-                                    pageNumPending = null;
-                                }
-                            });
-                        }).catch(function (error) {
-                            console.error('Error rendering page:', error);
-                        });
-
-                        // Update page counters
-                        const pageNumEl = document.getElementById('page_num');
-                        if (pageNumEl) pageNumEl.textContent = num;
-                    }
-
-                    /**
-                     * If another page rendering in progress, waits until the rendering is
-                     * finised. Otherwise, executes rendering immediately.
-                     */
-                    function queueRenderPage(num) {
-                        if (pageRendering) {
-                            pageNumPending = num;
-                        } else {
-                            renderPage(num);
-                        }
-                    }
-
-                    /**
-                     * Displays previous page.
-                     */
-                    function onPrevPage() {
-                        if (pageNum <= 1) {
-                            return;
-                        }
-                        pageNum--;
-                        queueRenderPage(pageNum);
-                    }
-                    const prevBtn = document.getElementById('prev');
-                    if (prevBtn) {
-                        // Remove potential duplicate listeners by cloning
-                        const newPrevBtn = prevBtn.cloneNode(true);
-                        prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
-                        newPrevBtn.addEventListener('click', onPrevPage);
-                    }
-
-                    /** * Displays next page. */
-                    function onNextPage() {
-                        if (pageNum >= pdfDoc.numPages) {
-                            return;
-                        }
-                        pageNum++;
-                        queueRenderPage(pageNum);
-                    }
-                    const nextBtn = document.getElementById('next');
-                    if (nextBtn) {
-                        // Remove potential duplicate listeners by cloning
-                        const newNextBtn = nextBtn.cloneNode(true);
-                        nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
-                        newNextBtn.addEventListener('click', onNextPage);
-                    }
-
-                    /**
-                     * Asynchronously downloads PDF.
-                     */
-                    pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
-                        pdfDoc = pdfDoc_;
-                        const pageCountEl = document.getElementById('page_count');
-                        if (pageCountEl) pageCountEl.textContent = pdfDoc.numPages;
-
-                        // Hide loading info
-                        const loadingInfo = document.getElementById('loading-info');
-                        if (loadingInfo) loadingInfo.style.display = 'none';
-
-                        renderPage(pageNum);
-                    }).catch(function (error) {
-                        console.error('Error loading PDF:', error);
-                        const loadingInfo = document.getElementById('loading-info');
-                        if (loadingInfo) loadingInfo.textContent = 'Eroare la încărcarea PDF: ' + error.message;
-                    });
-                }
-
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', initPDF);
-                } else {
-                    initPDF();
-                }
-            </script>
 
             <!-- Script to handle video playback -->
             <script>
