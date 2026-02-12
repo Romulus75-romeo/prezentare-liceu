@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://romulus75-romeo.github.io/prezentare-liceu/sitemap.xml

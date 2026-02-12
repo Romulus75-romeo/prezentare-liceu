@@ -61,28 +61,40 @@
             <span>Oferta Educațională</span>
         </div>
 
-        <!-- 3-Column Responsive Layout -->
-        <div class="responsive-3-col">
+        <!-- New Layout: Sidebar Left (Videos) + Content Right (Presentation) -->
+        <div class="layout-sidebar-left">
 
-            <!-- Left Video: Prezentare Generală - Small YouTube Style -->
-            <div class="sidebar-col">
-                <h4 style="text-align: center; margin-bottom: 8px; color: var(--secondary-blue); font-size: 0.85rem;">
-                    Prezentare
-                </h4>
-                <!-- 16:9 Aspect Ratio Container -->
-                <div
-                    style="position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
-                    <video id="video-1"
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;"
-                        poster="media/Prezentare_thumb.jpg" controls>
-                        <source src="media/Prezentare.mp4" type="video/mp4">
-                        Browser-ul tău nu suportă tag-ul video.
-                    </video>
+            <!-- Left Sidebar: Videos -->
+            <div class="sidebar-videos">
+                <!-- Video 1: Prezentare Generală -->
+                <div>
+                    <h4 style="text-align: center; margin-bottom: 8px; color: var(--secondary-blue); font-size: 1rem;">
+                        Prezentare Generală
+                    </h4>
+                    <div class="video-container" style="box-shadow: var(--shadow-md);">
+                        <video id="video-1" controls poster="media/Prezentare_thumb.jpg">
+                            <source src="media/Prezentare.mp4" type="video/mp4">
+                            Browser-ul tău nu suportă tag-ul video.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Video 2: Tur Virtual -->
+                <div>
+                    <h4 style="text-align: center; margin-bottom: 8px; color: var(--secondary-blue); font-size: 1rem;">
+                        Tur Virtual
+                    </h4>
+                    <div class="video-container" style="box-shadow: var(--shadow-md);">
+                        <video id="video-2" controls poster="media/Prezentare1_thumb.jpg">
+                            <source src="media/Prezentare1.mp4" type="video/mp4">
+                            Browser-ul tău nu suportă tag-ul video.
+                        </video>
+                    </div>
                 </div>
             </div>
 
-            <!-- Center: Main Content -->
-            <div class="center-col">
+            <!-- Right Content: Main Presentation -->
+            <div class="content-presentation" style="margin-bottom: 40px;">
 
                 <!-- Unified Presentation Layout -->
                 <!-- PDF Viewer Section Replaced with HTML Content -->
@@ -319,25 +331,9 @@
                     </div>
 
                 </div>
-
             </div>
 
-            <!-- Right Video: Tur Virtual - Small YouTube Style -->
-            <div class="sidebar-col">
-                <h4 style="text-align: center; margin-bottom: 8px; color: var(--secondary-blue); font-size: 0.85rem;">
-                    Tur Virtual
-                </h4>
-                <!-- 16:9 Aspect Ratio Container -->
-                <div
-                    style="position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
-                    <video id="video-2"
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;"
-                        poster="media/Prezentare1_thumb.jpg" controls>
-                        <source src="media/Prezentare1.mp4" type="video/mp4">
-                        Browser-ul tău nu suportă tag-ul video.
-                    </video>
-                </div>
-            </div>
+
 
         </div>
     </div>
