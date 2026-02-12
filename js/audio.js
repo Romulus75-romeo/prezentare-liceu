@@ -13,7 +13,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Set initial volume, but don't autoplay
     audio.volume = 0.5;
-    updateUI(); // Set initial UI to show "Start Muzică"
+
+    // --- PERSISTENCE LOGIC (LocalStorage) ---
+    // Restore state if available
+    const savedTime = localStorage.getItem('audioTime');
+    const savedPlaying = localStorage.getItem('audioPlaying');
+    const savedVolume = localStorage.getItem('audioVolume');
+
+    if (savedVolume) {
+        audio.volume = parseFloat(savedVolume);
+        volumeSlider.value = savedVolume;
+    }
+
+    if (savedTime) {
+        audio.currentTime = parseFloat(savedTime);
+    }
+
+    // Attempt to auto-resume if it was playing
+    if (savedPlaying === 'true') {
+        // We try to play. Browsers might block this if no interaction, 
+        // but since it's a click-triggered navigation, it often works.
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+                isPlaying = true;
+                updateUI();
+            }).catch(error => {
+                console.log("Autoplay prevented by browser policy:", error);
+                isPlaying = false;
+                updateUI();
+            });
+        }
+    } else {
+        updateUI(); // Set initial UI logic
+    }
+
+    // Save state before unloading (for standard navigation/refresh)
+    window.addEventListener('beforeunload', () => {
+        localStorage.setItem('audioTime', audio.currentTime);
+        localStorage.setItem('audioPlaying', isPlaying);
+        localStorage.setItem('audioVolume', audio.volume);
+    });
+
+    // Save state periodically (fallback)
+    setInterval(() => {
+        if (isPlaying) {
+            localStorage.setItem('audioTime', audio.currentTime);
+            localStorage.setItem('audioPlaying', isPlaying);
+        }
+    }, 1000);
 
     controls.addEventListener("click", function (e) {
         // Prevent toggling when clicking the slider
