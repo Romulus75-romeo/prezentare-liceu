@@ -29,6 +29,10 @@
     --container-width: 1200px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Breadcrumbs */
 .breadcrumb {
     padding: 10px 0;
