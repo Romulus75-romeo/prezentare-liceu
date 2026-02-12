@@ -288,6 +288,7 @@ video {
         border-top: 1px solid #eee;
         gap: 10px;
         gap: 10px;
+        animation: slideDown 0.3s ease forwards;
         z-index: 999;
     }
 
@@ -314,7 +315,17 @@ video {
     }
 }
 
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* Hero Section */
 .hero {
@@ -1407,7 +1418,7 @@ footer small {
     }
 }
 
-/* --- ANIMATIONS & POLISH --- */
+/* --- ANIMATIONS (Safe Polish) --- */
 
 /* Scroll Animation Classes */
 .fade-in-section {
@@ -1420,15 +1431,6 @@ footer small {
 .fade-in-section.visible {
     opacity: 1;
     transform: none;
-}
-
-/* Staggered delays for grids (optional simple approach) */
-.grid>div:nth-child(2) {
-    transition-delay: 0.1s;
-}
-
-.grid>div:nth-child(3) {
-    transition-delay: 0.2s;
 }
 
 /* Pulse Animation for CTA Buttons */
@@ -1448,36 +1450,4 @@ footer small {
 
 .btn-accent {
     animation: pulse-gold 3s infinite;
-}
-
-/* Mobile Touch Feedback */
-@media (hover: none) {
-
-    .btn:active,
-    .nav-links a:active,
-    .card:active {
-        transform: scale(0.96);
-        transition: transform 0.1s;
-    }
-}
-
-/* Smooth Slide for Mobile Menu */
-@media (max-width: 992px) {
-    .nav-links {
-        transform-origin: top;
-        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.3s;
-        /* Replaced animation with transition for smoother toggle */
-        animation: none;
-        transform: scaleY(0);
-        opacity: 0;
-        display: flex;
-        /* Always flex, but hidden via transform/opacity/visibility */
-        visibility: hidden;
-    }
-
-    .nav-links.active {
-        transform: scaleY(1);
-        opacity: 1;
-        visibility: visible;
-    }
 }
