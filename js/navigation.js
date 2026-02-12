@@ -156,3 +156,51 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 });
+
+// --- SCROLL TO TOP FEATURE ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Create button
+    const scrollBtn = document.createElement('button');
+    scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    scrollBtn.className = 'scroll-to-top';
+    scrollBtn.title = 'Mergi sus';
+    document.body.appendChild(scrollBtn);
+
+    // CSS for button (injected here or could be in style.css)
+    Object.assign(scrollBtn.style, {
+        position: 'fixed',
+        bottom: '80px', // Above audio controls
+        right: '20px',
+        width: '45px',
+        height: '45px',
+        borderRadius: '50%',
+        backgroundColor: 'var(--primary-blue)',
+        color: 'white',
+        border: 'none',
+        boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+        cursor: 'pointer',
+        display: 'none', // Hidden by default
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '1.2rem',
+        zIndex: '999', // Below audio controls (which are usually 9999)
+        transition: 'opacity 0.3s, transform 0.3s'
+    });
+
+    // Show/Hide logic
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollBtn.style.display = 'flex';
+        } else {
+            scrollBtn.style.display = 'none';
+        }
+    });
+
+    // Scroll logic
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});

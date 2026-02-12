@@ -29,6 +29,29 @@
     --container-width: 1200px;
 }
 
+/* Breadcrumbs */
+.breadcrumb {
+    padding: 10px 0;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.breadcrumb a {
+    color: var(--primary-blue);
+    font-weight: 500;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb i {
+    margin: 0 8px;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
 /* Reset & Base Styles */
 * {
     box-sizing: border-box;
