@@ -1405,3 +1405,79 @@ footer small {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         background: var(--light-bg);
     }
+}
+
+/* --- ANIMATIONS & POLISH --- */
+
+/* Scroll Animation Classes */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Staggered delays for grids (optional simple approach) */
+.grid>div:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.grid>div:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+/* Pulse Animation for CTA Buttons */
+@keyframes pulse-gold {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 204, 0, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+    }
+}
+
+.btn-accent {
+    animation: pulse-gold 3s infinite;
+}
+
+/* Mobile Touch Feedback */
+@media (hover: none) {
+
+    .btn:active,
+    .nav-links a:active,
+    .card:active {
+        transform: scale(0.96);
+        transition: transform 0.1s;
+    }
+}
+
+/* Smooth Slide for Mobile Menu */
+@media (max-width: 992px) {
+    .nav-links {
+        transform-origin: top;
+        transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.3s;
+        /* Replaced animation with transition for smoother toggle */
+        animation: none;
+        transform: scaleY(0);
+        opacity: 0;
+        display: flex;
+        /* Always flex, but hidden via transform/opacity/visibility */
+        visibility: hidden;
+    }
+
+    .nav-links.active {
+        transform: scaleY(1);
+        opacity: 1;
+        visibility: visible;
+    }
+}
