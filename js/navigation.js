@@ -204,3 +204,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+// --- SCROLL ANIMATIONS ---
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, observerOptions);
+
+    // Elements to animate
+    const elementsToAnimate = document.querySelectorAll('.card, .video-container, .hero h2, .hero p, .grid div, .responsive-3-col > div');
+    elementsToAnimate.forEach(el => {
+        el.classList.add('fade-in-section');
+        observer.observe(el);
+    });
+
+    // Re-attach on page navigation (SPA) is handled by 'page-changed' event in navigation.js usually, 
+    // but since we are inside navigation.js, we can hook into our own event.
+    window.addEventListener('page-changed', () => {
+        const newElements = document.querySelectorAll('.card, .video-container, .hero h2, .grid div, .responsive-3-col > div');
+        newElements.forEach(el => {
+            if (!el.classList.contains('fade-in-section')) {
+                el.classList.add('fade-in-section');
+                observer.observe(el);
+            }
+        });
+    });
+});

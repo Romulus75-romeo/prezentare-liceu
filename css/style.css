@@ -287,7 +287,7 @@ video {
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         border-top: 1px solid #eee;
         gap: 10px;
-        animation: slideDown 0.3s ease forwards;
+        gap: 10px;
         z-index: 999;
     }
 
@@ -314,17 +314,7 @@ video {
     }
 }
 
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* Hero Section */
 .hero {
@@ -587,760 +577,831 @@ footer small {
         padding: 60px 20px;
     }
 
-    .hero h2 {
-        font-size: 2rem;
-    }
-}
 
-/* Utilities for Guide Pages */
-.video-container {
-    margin: 30px auto;
-    background: #000;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    /* Stil YouTube aspect ratio 16:9 */
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-}
+    /* --- ANIMATIONS & POLISH --- */
 
-.video-container video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    /* Asigură că, conținutul este vizibil fără decupare */
-}
-
-.note {
-    background: #fff3cd;
-    color: #856404;
-    padding: 15px;
-    border-left: 5px solid #ffeeba;
-    margin-top: 20px;
-    border-radius: var(--radius-md);
-    font-size: 0.95em;
-}
-
-/* Video Modal Styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background-color: transparent;
-    margin: auto;
-    padding: 0;
-    width: 90%;
-    max-width: 1200px;
-    position: relative;
-    border-radius: var(--radius-lg);
-}
-
-.close-modal {
-    color: var(--white);
-    position: absolute;
-    top: -40px;
-    right: 0;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.close-modal:hover {
-    color: var(--accent-gold);
-}
-
-/* PDF Viewer Styles */
-/* PDF Viewer Styles */
-/* PDF Viewer Styles */
-.pdf-compact {
-    max-width: 700px !important;
-    /* Slightly wider for better presence */
-    margin: 0 auto 50px;
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    /* Deeper, softer shadow */
-    overflow: hidden;
-    /* Card Container properties */
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-top: 5px solid var(--accent-gold);
-    /* Gold Brand Accent */
-    transition: transform 0.3s ease;
-}
-
-.pdf-compact:hover {
-    transform: translateY(-5px);
-    /* Subtle lift effect */
-}
-
-.pdf-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #fff;
-    padding: 15px 25px;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.pdf-controls .btn {
-    border-radius: 50px;
-    /* Pill shaped buttons */
-    padding: 8px 20px;
-    font-size: 0.9rem;
-    box-shadow: none;
-    border: 1px solid #eee;
-    background: #f8f9fa;
-    color: var(--primary-blue);
-}
-
-.pdf-controls .btn:hover {
-    background: var(--primary-blue);
-    color: #fff;
-    border-color: var(--primary-blue);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 64, 128, 0.2);
-}
-
-.pdf-controls #fullscreen-btn {
-    background: rgba(255, 204, 0, 0.1);
-    /* Subtle Gold BG */
-    color: #b38f00;
-    border-color: transparent;
-}
-
-.pdf-controls #fullscreen-btn:hover {
-    background: var(--accent-gold);
-    color: var(--secondary-blue);
-}
-
-
-.pdf-canvas-container {
-    background: #333;
-    /* Darker background for contrast */
-    padding: 30px;
-    text-align: center;
-    position: relative;
-    min-height: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: radial-gradient(#444 1px, transparent 1px);
-    background-size: 20px 20px;
-    /* Subtle pattern */
-}
-
-.pdf-footer {
-    padding: 25px;
-    background: #fff;
-    text-align: center;
-    border-top: 1px solid #f0f0f0;
-}
-
-.pdf-download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--primary-blue);
-    color: white;
-    padding: 12px 25px;
-    border-radius: var(--radius-pill);
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-sm);
-}
-
-.pdf-download-btn:hover {
-    background: var(--secondary-blue);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
-
-.pdf-fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw !important;
-    height: 100vh !important;
-    max-width: none !important;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.9);
-    padding: 0 !important;
-    margin: 0 !important;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
-
-.pdf-fullscreen .pdf-controls {
-    border-radius: 0 !important;
-    background: #f0f0f0 !important;
-    padding: 15px 20px !important;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.pdf-fullscreen .pdf-canvas-container {
-    flex-grow: 1;
-    border-radius: 0 !important;
-    padding: 40px !important;
-    min-height: 100%;
-}
-
-.pdf-fullscreen .pdf-footer {
-    display: none;
-    /* Ascunde subsolul de descărcare în modul ecran complet pentru a economisi spațiu */
-}
-
-.pdf-fullscreen canvas {
-    max-height: 85vh !important;
-    /* Încadrare confortabilă în înălțimea ecranului */
-    max-width: 90vw !important;
-    /* Încadrare în lățimea ecranului */
-    width: auto !important;
-    height: auto !important;
-    /* Menține raportul de aspect */
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-}
-
-/* Video Row Layout (PDF is now above this) */
-.presentation-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    max-width: 1400px;
-    margin: 0 auto 60px;
-    padding: 0 20px;
-}
-
-.presentation-side {
-    width: 100%;
-}
-
-/* Ensure video card fills the side container */
-.presentation-side .video-card {
-    width: 100%;
-    margin-bottom: 0;
-}
-
-/* -----------------------------------------------------------
-   RESPONSIVE LAYOUT UTILITIES (Added for Mobile Optimization)
-   ----------------------------------------------------------- */
-
-/* Flexible 3-Column Layout Container */
-.responsive-3-col {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-    flex-wrap: nowrap;
-    /* Default to no wrap on desktop */
-    align-items: flex-start;
-    justify-content: center;
-}
-
-/* Sidebar Columns (Videos) */
-.sidebar-col {
-    flex: 0 0 auto;
-    width: 250px;
-    /* Slightly wider for better video presentation */
-    max-width: 250px;
-}
-
-/* Center Column (Main Content) */
-.center-col {
-    flex: 1;
-    min-width: 0;
-    /* Prevents flex item from overflowing */
-    max-width: 800px;
-}
-
-/* Responsive Media Queries */
-@media (max-width: 992px) {
-    .responsive-3-col {
-        flex-wrap: wrap;
-        /* Allow wrapping on medium screens */
+    /* Scroll Animation Classes */
+    .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        will-change: opacity, transform;
     }
 
-    .sidebar-col {
+    .fade-in-section.visible {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Staggered delays for grids (optional simple approach) */
+    .grid>div:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+
+    .grid>div:nth-child(3) {
+        transition-delay: 0.2s;
+    }
+
+    /* Pulse Animation for CTA Buttons */
+    @keyframes pulse-gold {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.4);
+        }
+
+        70% {
+            box-shadow: 0 0 0 10px rgba(255, 204, 0, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+        }
+    }
+
+    .btn-accent {
+        animation: pulse-gold 3s infinite;
+    }
+
+    /* Mobile Touch Feedback */
+    @media (hover: none) {
+
+        .btn:active,
+        .nav-links a:active,
+        .card:active {
+            transform: scale(0.96);
+            transition: transform 0.1s;
+        }
+    }
+
+    /* Smooth Slide for Mobile Menu */
+    @media (max-width: 992px) {
+        .nav-links {
+            transform-origin: top;
+            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.3s;
+            /* Replaced animation with transition for smoother toggle */
+            animation: none;
+            transform: scaleY(0);
+            opacity: 0;
+            display: flex;
+            /* Always flex, but hidden via transform/opacity/visibility */
+            visibility: hidden;
+        }
+
+        .nav-links.active {
+            transform: scaleY(1);
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    /* Utilities for Guide Pages */
+    .video-container {
+        margin: 30px auto;
+        background: #000;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        /* Stil YouTube aspect ratio 16:9 */
+        position: relative;
         width: 100%;
-        /* Full width on smaller screens */
-        max-width: 100%;
-        margin-bottom: 20px;
-        order: 2;
-        /* Move videos below main content typically, or adjust as needed */
+        aspect-ratio: 16 / 9;
     }
 
-    /* If we want videos at the bottom, we can use order. 
-       Assuming main content is naturally second, valid order would be:
-       Title/Intro (if outside) -> Main Content -> Videos
-    */
-
-    .center-col {
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        max-width: 100%;
-        order: 1;
-        /* Main content first on mobile */
-        margin-bottom: 30px;
+        height: 100%;
+        object-fit: contain;
+        /* Asigură că, conținutul este vizibil fără decupare */
     }
 
-    /* Specific adjustments for Oferta/EPAS video sidebars when stacked */
-    .sidebar-col h4 {
-        text-align: left;
-        /* Align headers left on mobile */
-        padding-left: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        padding-left: 15px;
-        padding-right: 15px;
+    .note {
+        background: #fff3cd;
+        color: #856404;
+        padding: 15px;
+        border-left: 5px solid #ffeeba;
+        margin-top: 20px;
+        border-radius: var(--radius-md);
+        font-size: 0.95em;
     }
 
-    /* Stack everything */
-    .responsive-3-col {
+    /* Video Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        background-color: transparent;
+        margin: auto;
+        padding: 0;
+        width: 90%;
+        max-width: 1200px;
+        position: relative;
+        border-radius: var(--radius-lg);
+    }
+
+    .close-modal {
+        color: var(--white);
+        position: absolute;
+        top: -40px;
+        right: 0;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .close-modal:hover {
+        color: var(--accent-gold);
+    }
+
+    /* PDF Viewer Styles */
+    /* PDF Viewer Styles */
+    /* PDF Viewer Styles */
+    .pdf-compact {
+        max-width: 700px !important;
+        /* Slightly wider for better presence */
+        margin: 0 auto 50px;
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        /* Deeper, softer shadow */
+        overflow: hidden;
+        /* Card Container properties */
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-top: 5px solid var(--accent-gold);
+        /* Gold Brand Accent */
+        transition: transform 0.3s ease;
+    }
+
+    .pdf-compact:hover {
+        transform: translateY(-5px);
+        /* Subtle lift effect */
+    }
+
+    .pdf-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        padding: 15px 25px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .pdf-controls .btn {
+        border-radius: 50px;
+        /* Pill shaped buttons */
+        padding: 8px 20px;
+        font-size: 0.9rem;
+        box-shadow: none;
+        border: 1px solid #eee;
+        background: #f8f9fa;
+        color: var(--primary-blue);
+    }
+
+    .pdf-controls .btn:hover {
+        background: var(--primary-blue);
+        color: #fff;
+        border-color: var(--primary-blue);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 64, 128, 0.2);
+    }
+
+    .pdf-controls #fullscreen-btn {
+        background: rgba(255, 204, 0, 0.1);
+        /* Subtle Gold BG */
+        color: #b38f00;
+        border-color: transparent;
+    }
+
+    .pdf-controls #fullscreen-btn:hover {
+        background: var(--accent-gold);
+        color: var(--secondary-blue);
+    }
+
+
+    .pdf-canvas-container {
+        background: #333;
+        /* Darker background for contrast */
+        padding: 30px;
+        text-align: center;
+        position: relative;
+        min-height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: radial-gradient(#444 1px, transparent 1px);
+        background-size: 20px 20px;
+        /* Subtle pattern */
+    }
+
+    .pdf-footer {
+        padding: 25px;
+        background: #fff;
+        text-align: center;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .pdf-download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--primary-blue);
+        color: white;
+        padding: 12px 25px;
+        border-radius: var(--radius-pill);
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .pdf-download-btn:hover {
+        background: var(--secondary-blue);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .pdf-fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: none !important;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex;
         flex-direction: column;
+        overflow-y: auto;
     }
 
-    .sidebar-col {
-        width: 100%;
+    .pdf-fullscreen .pdf-controls {
+        border-radius: 0 !important;
+        background: #f0f0f0 !important;
+        padding: 15px 20px !important;
+        position: sticky;
+        top: 0;
+        z-index: 10;
     }
 
-    .video-container,
-    .sidebar-col>div {
-        /* ensure embedded video containers are responsive */
-        height: auto;
+    .pdf-fullscreen .pdf-canvas-container {
+        flex-grow: 1;
+        border-radius: 0 !important;
+        padding: 40px !important;
+        min-height: 100%;
     }
 
-    /* Adjust PDF frames */
-    iframe[src*="pdf"] {
-        height: 500px !important;
-        /* Adjusted height for mobile */
+    .pdf-fullscreen .pdf-footer {
+        display: none;
+        /* Ascunde subsolul de descărcare în modul ecran complet pentru a economisi spațiu */
     }
-}
 
-/* Deprecated within this layout, but class used above - styles handled inline or via utility */
+    .pdf-fullscreen canvas {
+        max-height: 85vh !important;
+        /* Încadrare confortabilă în înălțimea ecranului */
+        max-width: 90vw !important;
+        /* Încadrare în lățimea ecranului */
+        width: auto !important;
+        height: auto !important;
+        /* Menține raportul de aspect */
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
 
-@media (max-width: 992px) {
-
-    /* Stack videos when screen is too narrow for side-by-side */
+    /* Video Row Layout (PDF is now above this) */
     .presentation-layout {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto 60px;
+        padding: 0 20px;
     }
 
     .presentation-side {
         width: 100%;
-        max-width: 700px;
-        margin: 0 auto 20px;
     }
-}
 
-/* Adjusted Video Styles */
-.video-container {
-    position: relative;
-    background: #000;
-    overflow: hidden;
-}
+    /* Ensure video card fills the side container */
+    .presentation-side .video-card {
+        width: 100%;
+        margin-bottom: 0;
+    }
 
-.video-card {
-    background: var(--white);
-    padding: 20px;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-}
+    /* -----------------------------------------------------------
+   RESPONSIVE LAYOUT UTILITIES (Added for Mobile Optimization)
+   ----------------------------------------------------------- */
 
-/* Featured Card Style (extracted from erasmus.html) */
-.featured-card {
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    overflow: hidden;
-    margin-bottom: 25px;
-    display: flex;
-    flex-wrap: wrap;
-    border-left: 4px solid var(--primary-blue);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
+    /* Flexible 3-Column Layout Container */
+    .responsive-3-col {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        flex-wrap: nowrap;
+        /* Default to no wrap on desktop */
+        align-items: flex-start;
+        justify-content: center;
+    }
 
-.featured-card-content {
-    flex: 1;
-    min-width: 250px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+    /* Sidebar Columns (Videos) */
+    .sidebar-col {
+        flex: 0 0 auto;
+        width: 250px;
+        /* Slightly wider for better video presentation */
+        max-width: 250px;
+    }
 
-.featured-card-image {
-    flex: 1;
-    min-width: 200px;
-    background: #000;
-}
+    /* Center Column (Main Content) */
+    .center-col {
+        flex: 1;
+        min-width: 0;
+        /* Prevents flex item from overflowing */
+        max-width: 800px;
+    }
 
-.featured-card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    min-height: 180px;
-    opacity: 0.9;
-}
+    /* Responsive Media Queries */
+    @media (max-width: 992px) {
+        .responsive-3-col {
+            flex-wrap: wrap;
+            /* Allow wrapping on medium screens */
+        }
 
-.featured-card h3 {
-    color: var(--primary-blue);
-    font-size: 1.3rem;
-    margin-bottom: 8px;
-}
+        .sidebar-col {
+            width: 100%;
+            /* Full width on smaller screens */
+            max-width: 100%;
+            margin-bottom: 20px;
+            order: 2;
+            /* Move videos below main content typically, or adjust as needed */
+        }
 
-.featured-card .meta {
-    color: var(--text-light);
-    margin-bottom: 8px;
-    font-size: 0.85rem;
-}
+        /* If we want videos at the bottom, we can use order. 
+       Assuming main content is naturally second, valid order would be:
+       Title/Intro (if outside) -> Main Content -> Videos
+    */
 
-.featured-card .description {
-    margin-bottom: 12px;
-    line-height: 1.4;
-    font-size: 0.85rem;
-}
+        .center-col {
+            width: 100%;
+            max-width: 100%;
+            order: 1;
+            /* Main content first on mobile */
+            margin-bottom: 30px;
+        }
 
-.featured-card .btn-small {
-    padding: 6px 12px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
+        /* Specific adjustments for Oferta/EPAS video sidebars when stacked */
+        .sidebar-col h4 {
+            text-align: left;
+            /* Align headers left on mobile */
+            padding-left: 10px;
+        }
+    }
 
-/* Audio Player Styles */
-#audio-controls {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(255, 0, 0, 0.9);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    z-index: 9999;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border: 2px solid white;
-    transition: transform 0.3s ease, background 0.3s ease;
-}
+    @media (max-width: 768px) {
+        .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
 
-#audio-controls:hover {
-    background: rgba(200, 0, 0, 1);
-    transform: scale(1.05);
-}
+        /* Stack everything */
+        .responsive-3-col {
+            flex-direction: column;
+        }
 
-#volume-slider {
-    width: 100px;
-    cursor: pointer;
-    height: 5px;
-    accent-color: white;
-}
+        .sidebar-col {
+            width: 100%;
+        }
 
-/* --- School Offer Section Styles (PDF REPLICA) --- */
-.offer-html-container {
-    background: #e6e6fa;
-    /* Light lavender background matching PDF */
-    padding: 60px 40px;
-    border-radius: 0;
-    /* Removing border radius for paper look or keeping it subtle */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    font-family: 'Times New Roman', Times, serif;
-    /* Serif font matching PDF */
-    color: #333;
-    line-height: 1.6;
-    max-width: 900px;
-    margin: 0 auto;
-}
+        .video-container,
+        .sidebar-col>div {
+            /* ensure embedded video containers are responsive */
+            height: auto;
+        }
 
-.offer-header {
-    text-align: left;
-    /* Aligned left as per PDF */
-    margin-bottom: 40px;
-    position: relative;
-    border-bottom: none;
-    /* Removed border */
-    padding-bottom: 0;
-}
+        /* Adjust PDF frames */
+        iframe[src*="pdf"] {
+            height: 500px !important;
+            /* Adjusted height for mobile */
+        }
+    }
 
-.offer-logo {
-    position: absolute;
-    top: -20px;
-    right: 0;
-    max-width: 120px;
-    height: auto;
-    border-radius: 50%;
-    /* If logo is circular */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    /* Deprecated within this layout, but class used above - styles handled inline or via utility */
 
-.offer-header h3 {
-    color: #000;
-    font-size: 1.4rem;
-    margin: 0 0 10px 0;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: normal;
-}
+    @media (max-width: 992px) {
 
-.offer-slogan {
-    background: #6a0dad;
-    /* Standard Purple */
-    color: white;
-    display: inline-block;
-    padding: 5px 15px;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 1.2rem;
-    border-radius: 0;
-    /* Rectangular as in PDF */
-    box-shadow: none;
-    letter-spacing: 0.5px;
-    transform: skewX(-10deg);
-    /* Slight italic skew effect for container */
-}
+        /* Stack videos when screen is too narrow for side-by-side */
+        .presentation-layout {
+            grid-template-columns: 1fr;
+        }
 
-.offer-slogan span {
-    display: block;
-    transform: skewX(10deg);
-    /* Counter-skew text so it's readable */
-}
+        .presentation-side {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+    }
 
-.offer-title-section {
-    text-align: center;
-    margin-bottom: 30px;
-}
+    /* Adjusted Video Styles */
+    .video-container {
+        position: relative;
+        background: #000;
+        overflow: hidden;
+    }
 
-.offer-title-section h2 {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 2rem;
-    font-style: italic;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 5px;
-}
+    .video-card {
+        background: var(--white);
+        padding: 20px;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+    }
 
-.offer-title-section h3 {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.8rem;
-    font-style: italic;
-    font-weight: bold;
-    color: #000;
-    margin-top: 0;
-}
+    /* Featured Card Style (extracted from erasmus.html) */
+    .featured-card {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+        margin-bottom: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        border-left: 4px solid var(--primary-blue);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-.intro-text {
-    font-size: 1.2rem;
-    text-align: left;
-    margin-bottom: 20px;
-    color: #6a0dad;
-    /* Purple intro text */
-}
+    .featured-card-content {
+        flex: 1;
+        min-width: 250px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
-.offer-list {
-    list-style-type: disc;
-    padding-left: 40px;
-    margin-bottom: 30px;
-}
+    .featured-card-image {
+        flex: 1;
+        min-width: 200px;
+        background: #000;
+    }
 
-.offer-list li {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-    color: #6a0dad;
-    /* Purple text for list items */
-}
+    .featured-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-height: 180px;
+        opacity: 0.9;
+    }
 
-.offer-list li strong {
-    font-weight: bold;
-}
+    .featured-card h3 {
+        color: var(--primary-blue);
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
 
-.highlight-box {
-    background-color: #f9f9f9;
-    /* Very light background for contrast */
-    color: #2e8b57;
-    /* SeaGreen text matching PDF */
-    font-weight: bold;
-    font-style: italic;
-    font-size: 1.2rem;
-    padding: 20px;
-    margin: 30px 0;
-    text-align: justify;
-    border-left: 5px solid #2e8b57;
-    /* Decorative border matching theme */
-}
+    .featured-card .meta {
+        color: var(--text-light);
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+    }
 
-.principles-section h4 {
-    color: #2e8b57;
-    /* Green color for Principles header */
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
+    .featured-card .description {
+        margin-bottom: 12px;
+        line-height: 1.4;
+        font-size: 0.85rem;
+    }
 
-.principles-list {
-    list-style-type: none;
-    /* Custom bullets */
-    padding-left: 20px;
-}
+    .featured-card .btn-small {
+        padding: 6px 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: bold;
+        font-size: 0.8rem;
+    }
 
-.principles-list li {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-    color: #2e8b57;
-    /* Green text */
-    position: relative;
-    padding-left: 15px;
-}
+    /* Audio Player Styles */
+    #audio-controls {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(255, 0, 0, 0.9);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        z-index: 9999;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border: 2px solid white;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
 
-/* Custom green square bullet */
-.principles-list li::before {
-    content: "■";
-    color: #2e8b57;
-    position: absolute;
-    left: -15px;
-    font-size: 0.8em;
-    top: 2px;
-}
+    #audio-controls:hover {
+        background: rgba(200, 0, 0, 1);
+        transform: scale(1.05);
+    }
 
-.principles-list li strong {
-    font-weight: bold;
-}
+    #volume-slider {
+        width: 100px;
+        cursor: pointer;
+        height: 5px;
+        accent-color: white;
+    }
 
-/* Placeholder and New Section Styles */
-.offer-section {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px dashed #ccc;
-}
+    /* --- School Offer Section Styles (PDF REPLICA) --- */
+    .offer-html-container {
+        background: #e6e6fa;
+        /* Light lavender background matching PDF */
+        padding: 60px 40px;
+        border-radius: 0;
+        /* Removing border radius for paper look or keeping it subtle */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        font-family: 'Times New Roman', Times, serif;
+        /* Serif font matching PDF */
+        color: #333;
+        line-height: 1.6;
+        max-width: 900px;
+        margin: 0 auto;
+    }
 
-.offer-section h4 {
-    color: var(--primary-blue);
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--accent-gold);
-    display: inline-block;
-}
+    .offer-header {
+        text-align: left;
+        /* Aligned left as per PDF */
+        margin-bottom: 40px;
+        position: relative;
+        border-bottom: none;
+        /* Removed border */
+        padding-bottom: 0;
+    }
 
-.placeholder {
-    background: #fff3cd;
-    border: 2px dashed #e0a800;
-    padding: 30px;
-    text-align: center;
-    color: #856404;
-    border-radius: var(--radius-md);
-    margin-bottom: 30px;
-}
+    .offer-logo {
+        position: absolute;
+        top: -20px;
+        right: 0;
+        max-width: 120px;
+        height: auto;
+        border-radius: 50%;
+        /* If logo is circular */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-.placeholder p {
-    margin: 0;
-    font-size: 1.1rem;
-}
+    .offer-header h3 {
+        color: #000;
+        font-size: 1.4rem;
+        margin: 0 0 10px 0;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: normal;
+    }
 
-/* Offer Table Styles */
-.table-responsive {
-    overflow-x: auto;
-    margin-bottom: 30px;
-}
+    .offer-slogan {
+        background: #6a0dad;
+        /* Standard Purple */
+        color: white;
+        display: inline-block;
+        padding: 5px 15px;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 1.2rem;
+        border-radius: 0;
+        /* Rectangular as in PDF */
+        box-shadow: none;
+        letter-spacing: 0.5px;
+        transform: skewX(-10deg);
+        /* Slight italic skew effect for container */
+    }
 
-.offer-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1rem;
-}
+    .offer-slogan span {
+        display: block;
+        transform: skewX(10deg);
+        /* Counter-skew text so it's readable */
+    }
 
-.offer-table th,
-.offer-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-    vertical-align: middle;
-}
+    .offer-title-section {
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-.offer-table th {
-    background-color: var(--primary-blue);
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
+    .offer-title-section h2 {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 2rem;
+        font-style: italic;
+        font-weight: bold;
+        color: #000;
+        margin-bottom: 5px;
+    }
 
-.offer-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+    .offer-title-section h3 {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 1.8rem;
+        font-style: italic;
+        font-weight: bold;
+        color: #000;
+        margin-top: 0;
+    }
 
-.offer-table tr:hover {
-    background-color: #f1f1f1;
-}
+    .intro-text {
+        font-size: 1.2rem;
+        text-align: left;
+        margin-bottom: 20px;
+        color: #6a0dad;
+        /* Purple intro text */
+    }
 
-.badge {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: white;
-    font-family: sans-serif;
-}
+    .offer-list {
+        list-style-type: disc;
+        padding-left: 40px;
+        margin-bottom: 30px;
+    }
 
-.badge.dual {
-    background-color: #28a745;
-    /* Green for Dual */
-}
+    .offer-list li {
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+        color: #6a0dad;
+        /* Purple text for list items */
+    }
 
-.badge.stat {
-    background-color: #007bff;
-    /* Blue for Stat */
-}
+    .offer-list li strong {
+        font-weight: bold;
+    }
 
-/* Partners Grid */
-.partners-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-}
+    .highlight-box {
+        background-color: #f9f9f9;
+        /* Very light background for contrast */
+        color: #2e8b57;
+        /* SeaGreen text matching PDF */
+        font-weight: bold;
+        font-style: italic;
+        font-size: 1.2rem;
+        padding: 20px;
+        margin: 30px 0;
+        text-align: justify;
+        border-left: 5px solid #2e8b57;
+        /* Decorative border matching theme */
+    }
 
-.partner-item {
-    background: white;
-    border: 1px solid #eee;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: bold;
-    color: var(--secondary-blue);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s;
-    font-family: sans-serif;
-}
+    .principles-section h4 {
+        color: #2e8b57;
+        /* Green color for Principles header */
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
 
-.partner-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background: var(--light-bg);
-}
+    .principles-list {
+        list-style-type: none;
+        /* Custom bullets */
+        padding-left: 20px;
+    }
+
+    .principles-list li {
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+        color: #2e8b57;
+        /* Green text */
+        position: relative;
+        padding-left: 15px;
+    }
+
+    /* Custom green square bullet */
+    .principles-list li::before {
+        content: "■";
+        color: #2e8b57;
+        position: absolute;
+        left: -15px;
+        font-size: 0.8em;
+        top: 2px;
+    }
+
+    .principles-list li strong {
+        font-weight: bold;
+    }
+
+    /* Placeholder and New Section Styles */
+    .offer-section {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px dashed #ccc;
+    }
+
+    .offer-section h4 {
+        color: var(--primary-blue);
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+        border-bottom: 2px solid var(--accent-gold);
+        display: inline-block;
+    }
+
+    .placeholder {
+        background: #fff3cd;
+        border: 2px dashed #e0a800;
+        padding: 30px;
+        text-align: center;
+        color: #856404;
+        border-radius: var(--radius-md);
+        margin-bottom: 30px;
+    }
+
+    .placeholder p {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    /* Offer Table Styles */
+    .table-responsive {
+        overflow-x: auto;
+        margin-bottom: 30px;
+    }
+
+    .offer-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 1rem;
+    }
+
+    .offer-table th,
+    .offer-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .offer-table th {
+        background-color: var(--primary-blue);
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .offer-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .offer-table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: white;
+        font-family: sans-serif;
+    }
+
+    .badge.dual {
+        background-color: #28a745;
+        /* Green for Dual */
+    }
+
+    .badge.stat {
+        background-color: #007bff;
+        /* Blue for Stat */
+    }
+
+    /* Partners Grid */
+    .partners-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .partner-item {
+        background: white;
+        border: 1px solid #eee;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        color: var(--secondary-blue);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s;
+        font-family: sans-serif;
+    }
+
+    .partner-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background: var(--light-bg);
+    }
