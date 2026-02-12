@@ -344,6 +344,23 @@ video {
     font-weight: 500;
 }
 
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.hero-image {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.hero-image.top-focus {
+    object-position: top;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 12px;
@@ -808,7 +825,8 @@ footer small {
     display: flex;
     gap: 20px;
     margin-top: 20px;
-    flex-wrap: nowrap; /* Default to no wrap on desktop */
+    flex-wrap: nowrap;
+    /* Default to no wrap on desktop */
     align-items: flex-start;
     justify-content: center;
 }
@@ -816,45 +834,52 @@ footer small {
 /* Sidebar Columns (Videos) */
 .sidebar-col {
     flex: 0 0 auto;
-    width: 250px; /* Slightly wider for better video presentation */
+    width: 250px;
+    /* Slightly wider for better video presentation */
     max-width: 250px;
 }
 
 /* Center Column (Main Content) */
 .center-col {
     flex: 1;
-    min-width: 0; /* Prevents flex item from overflowing */
+    min-width: 0;
+    /* Prevents flex item from overflowing */
     max-width: 800px;
 }
 
 /* Responsive Media Queries */
 @media (max-width: 992px) {
     .responsive-3-col {
-        flex-wrap: wrap; /* Allow wrapping on medium screens */
+        flex-wrap: wrap;
+        /* Allow wrapping on medium screens */
     }
 
     .sidebar-col {
-        width: 100%; /* Full width on smaller screens */
+        width: 100%;
+        /* Full width on smaller screens */
         max-width: 100%;
         margin-bottom: 20px;
-        order: 2; /* Move videos below main content typically, or adjust as needed */
+        order: 2;
+        /* Move videos below main content typically, or adjust as needed */
     }
 
     /* If we want videos at the bottom, we can use order. 
        Assuming main content is naturally second, valid order would be:
        Title/Intro (if outside) -> Main Content -> Videos
     */
-    
+
     .center-col {
         width: 100%;
         max-width: 100%;
-        order: 1; /* Main content first on mobile */
+        order: 1;
+        /* Main content first on mobile */
         margin-bottom: 30px;
     }
-    
+
     /* Specific adjustments for Oferta/EPAS video sidebars when stacked */
     .sidebar-col h4 {
-        text-align: left; /* Align headers left on mobile */
+        text-align: left;
+        /* Align headers left on mobile */
         padding-left: 10px;
     }
 }
@@ -869,20 +894,21 @@ footer small {
     .responsive-3-col {
         flex-direction: column;
     }
-    
+
     .sidebar-col {
-        width: 100%; 
+        width: 100%;
     }
 
-    .video-container, 
-    .sidebar-col > div {
-       /* ensure embedded video containers are responsive */
-       height: auto;
+    .video-container,
+    .sidebar-col>div {
+        /* ensure embedded video containers are responsive */
+        height: auto;
     }
-    
+
     /* Adjust PDF frames */
     iframe[src*="pdf"] {
-        height: 500px !important; /* Adjusted height for mobile */
+        height: 500px !important;
+        /* Adjusted height for mobile */
     }
 }
 
