@@ -1168,6 +1168,14 @@ footer small {
     margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+    .offer-html-container {
+        padding: 30px 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
 .offer-header {
     text-align: left;
     /* Aligned left as per PDF */
@@ -1432,7 +1440,7 @@ footer small {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background: var(--light-bg);
 }
-}
+
 
 /* --- ANIMATIONS (Safe Polish) --- */
 
